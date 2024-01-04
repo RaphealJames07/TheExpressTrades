@@ -119,33 +119,11 @@ const Login = () => {
                         </div>
                     </div>
                     <div className="w-full h-max flex items-center justify-center py-6 flex-col gap-6 phone:pt-28">
-                        <div className="w-[35%] phone:w-[95%] h-[145vh] phone:h-[115vh] bg-white rounded-[2rem] flex flex-col items-center px-10 phone:px-8 py-14 gap-5">
+                        <div className="w-[35%] phone:w-[95%] h-[85vh] phone:h-[80vh] bg-white rounded-[2rem] flex flex-col items-center px-10 phone:px-8 py-14 gap-5">
                             <p className="text-4xl phone:text-2xl font-semibold text-[#66cc33] mb-16">
-                                Let's get started
+                                Login to your account
                             </p>
-                            <p className="text-[#66cc33] text-lg font-semibold phone:text-center">
-                                Register Today and get $10 welcome bonus
-                            </p>
-                            <div className="w-full h-max flex flex-col gap-3">
-                                <p className="text-[#66cc33] text-lg font-semibold">
-                                    Full Name
-                                </p>
-                                <input
-                                    type="text"
-                                    placeholder="Enter your fullname"
-                                    className="w-full h-14 border border-gray-300 rounded-md pl-3 placeholder:text-gray-600 outline-none"
-                                />
-                            </div>
-                            <div className="w-full h-max flex flex-col gap-3">
-                                <p className="text-[#66cc33] text-lg font-semibold">
-                                    Username
-                                </p>
-                                <input
-                                    type="text"
-                                    placeholder="Enter your username"
-                                    className="w-full h-14 border border-gray-300 rounded-md pl-3 placeholder:text-gray-600 outline-none"
-                                />
-                            </div>
+
                             <div className="w-full h-max flex flex-col gap-3">
                                 <p className="text-[#66cc33] text-lg font-semibold">
                                     Email
@@ -156,7 +134,7 @@ const Login = () => {
                                     className="w-full h-14 border border-gray-300 rounded-md pl-3 placeholder:text-gray-600 outline-none"
                                 />
                             </div>
-                            <div className="w-full h-max flex flex-col gap-3">
+                            <div className="w-full h-max flex flex-col gap-3 mb-10 phone:mb-6">
                                 <p className="text-[#66cc33] text-lg font-semibold">
                                     Password
                                 </p>
@@ -166,9 +144,9 @@ const Login = () => {
                                     className="w-full h-14 border border-gray-300 rounded-md pl-3 placeholder:text-gray-600 outline-none"
                                 />
                                 <p>
-                                    Forgot your password?{" "}
+                                    Forgot your password? 
                                     <NavLink to={"/forget-password"}>
-                                        <span className="text-orange-400 cursor-pointer">
+                                        <span className="text-orange-400 cursor-pointer font-bold">
                                             Recover Password
                                         </span>
                                     </NavLink>
@@ -180,8 +158,8 @@ const Login = () => {
                             </button>
                             <p className="text-lg font-semibold text-[#66cc33]">
                                 Don't have an account?{" "}
-                                <NavLink to={"/login"}>
-                                    <span className="text-orange-400 cursor-pointer">
+                                <NavLink to={"/register"}>
+                                    <span className="text-orange-400 cursor-pointer font-bold">
                                         Sign Up Here
                                     </span>
                                 </NavLink>
