@@ -104,21 +104,31 @@ const Home = () => {
                                     className={`w-full h-max pl-5 flex flex-col gap-4 pt-2`}
                                 >
                                     <ul className="w-max h-full flex flex-col gap-8 text-white text-xl font-semibold ">
-                                        <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                            Home
-                                        </li>
-                                        <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                            About Us
-                                        </li>
-                                        <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                            Plans
-                                        </li>
-                                        <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                            Contact
-                                        </li>
-                                        <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                            FAQ
-                                        </li>
+                                        <NavLink to={"/"}>
+                                            <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                                Home
+                                            </li>
+                                        </NavLink>
+                                        <NavLink to={"/about"}>
+                                            <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                                About Us
+                                            </li>
+                                        </NavLink>
+                                        <NavLink to={"/plans"}>
+                                            <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                                Plans
+                                            </li>
+                                        </NavLink>
+                                        <NavLink to={"/contact"}>
+                                            <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                                Contact
+                                            </li>
+                                        </NavLink>
+                                        <NavLink to={"/faq"}>
+                                            <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                                FAQ
+                                            </li>
+                                        </NavLink>
                                     </ul>
                                     <NavLink to={"/register"}>
                                         <button className="px-8 py-3 bg-gradient-to-r from-[#903eff] to-indigo-900 h-max w-max rounded-full text-white">
@@ -139,9 +149,11 @@ const Home = () => {
                                 management suite
                             </p>
                             <div className="w-full h-max flex justify-end phone:justify-center pr-20 phone:pr-0">
-                                <button className="px-8 py-3 bg-gradient-to-r from-[#903eff] via-transparent to-indigo-900 h-max w-max rounded-full text-white shadow-xl">
-                                    Get Started
-                                </button>
+                                <NavLink to={"/login"}>
+                                    <button className="px-8 py-3 bg-gradient-to-r from-[#903eff] via-transparent to-indigo-900 h-max w-max rounded-full text-white shadow-xl">
+                                        Get Started
+                                    </button>
+                                </NavLink>
                             </div>
                         </div>
                         <div className="w-[70%] phone:w-full h-full phone:h-max">
