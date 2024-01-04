@@ -22,14 +22,13 @@ const Login = () => {
                     console.log(res);
                     const token = res?.data?.token;
                     localStorage.setItem("verifyToken", token);
-                    nav("/user");
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         };
 
-        const handleLogin = (e:any) => {
+        const handleLogin = (e: any) => {
             e.preventDefault();
             if (!email || !password) {
                 toast.error("All fields are required");
@@ -45,6 +44,7 @@ const Login = () => {
                         setLoading(false);
                         toast.dismiss(toastLoadingId);
                         console.log(response);
+                        nav("/user");
                     })
                     .catch((error) => {
                         setLoading(false);
