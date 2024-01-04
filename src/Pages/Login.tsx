@@ -29,7 +29,7 @@ const Login = () => {
                 });
         };
 
-        const handleLogin = (e) => {
+        const handleLogin = (e:any) => {
             e.preventDefault();
             if (!email || !password) {
                 toast.error("All fields are required");

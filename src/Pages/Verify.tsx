@@ -12,7 +12,7 @@ const Verify = () => {
         const token = localStorage.getItem("verifyToken");
         const nav = useNavigate();
 
-        const handleVerify = (e) => {
+        const handleVerify = (e:any) => {
             e.preventDefault();
             if (!otp) {
                 toast.error("Please enter your OTP");

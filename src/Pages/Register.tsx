@@ -30,7 +30,7 @@ const Register = () => {
                 });
         };
 
-        const handleRegister = (e) => {
+        const handleRegister = (e:any) => {
             e.preventDefault();
             if (
                 !fullName ||
