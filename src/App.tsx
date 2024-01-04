@@ -14,6 +14,7 @@ import Withdraw from "./Pages/Withdraw";
 import MyAccount from "./Pages/MyAccount";
 import Deposit from "./Pages/Deposit";
 import ForgetPassword from "./Pages/ForgetPassword";
+import Verify from "./Pages/Verify";
 
 const router = createBrowserRouter([
     {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
         element: (
             <>
                 <ForgetPassword />
+            </>
+        ),
+    },
+    {
+        path: "/verify",
+        element: (
+            <>
+                <Verify />
             </>
         ),
     },
