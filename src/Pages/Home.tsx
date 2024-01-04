@@ -39,7 +39,7 @@ const Home = () => {
         <>
             <div className="w-full h-max">
                 {showHeader2 && <Header />}
-                <div className="homebg ">
+                <div className="homebg phone:h-[110vh] ">
                     <div
                         className={`${
                             smallScreen
@@ -119,26 +119,26 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-[120vh] flex">
-                        <div className="w-[70%] h-max flex flex-col pl-28 pt-44 gap-8 text-white z-10">
-                            <p className="text-8xl font-bold">
+                    <div className="w-full h-[120vh] phone:h-[80vh] flex phone:flex-col-reverse ">
+                        <div className="w-[70%] phone:w-full ph-h-0 h-max phone:full flex flex-col phone:items-center pl-28 phone:pl-0 pt-44 phone:pt-0 gap-8 text-white z-10">
+                            <p className="text-8xl font-bold phone:w-full phone:text-center phone:text-5xl">
                                 Take Your Portfolio to the Next Level
                             </p>
-                            <p className="text-xl">
+                            <p className="text-xl phone:w-full phone:text-center">
                                 Ultimate cryptocurrency and forex portfolio
                                 management suite
                             </p>
-                            <div className="w-full h-max flex justify-end pr-20">
+                            <div className="w-full h-max flex justify-end phone:justify-center pr-20 phone:pr-0">
                                 <button className="px-8 py-3 bg-gradient-to-r from-[#903eff] via-transparent to-indigo-900 h-max w-max rounded-full text-white shadow-xl">
                                     Get Started
                                 </button>
                             </div>
                         </div>
-                        <div className="w-[70%] h-full">
+                        <div className="w-[70%] phone:w-full h-full phone:h-max">
                             <img
                                 src={heroimg}
                                 alt=""
-                                className="w-[60%] absolute top-0 right-0 z"
+                                className="w-[60%] phone:w-full absolute top-0 right-0 z"
                             />
                         </div>
                     </div>
