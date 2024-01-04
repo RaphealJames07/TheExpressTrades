@@ -1,9 +1,21 @@
-
+import StructureTwo from "../Components/StructureTwo";
 
 const Contact = () => {
-  return (
-    <div>Contact</div>
-  )
-}
+    const ContactContent = () => {
+        return (
+            <>
+                <div className="w-full h-max flex items-center justify-center py-6 flex-col gap-6 phone:pt-28">
+                    more
+                </div>
+            </>
+        );
+    };
 
-export default Contact
+    return (
+        <>
+            <StructureTwo content={ContactContent} />
+        </>
+    );
+};
+
+export default Contact;

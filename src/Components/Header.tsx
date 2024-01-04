@@ -31,21 +31,31 @@ const Header = () => {
                     </div>
                     <div className="w-max h-full flex gap-10 items-center text-lg font-semibold z-10 phone:hidden">
                         <ul className="w-max h-full flex items-center gap-10 text-white ">
-                            <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                Home
-                            </li>
-                            <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                About Us
-                            </li>
-                            <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                Plans
-                            </li>
-                            <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                Contact
-                            </li>
-                            <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                FAQ
-                            </li>
+                            <NavLink to={"/"}>
+                                <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                    Home
+                                </li>
+                            </NavLink>
+                            <NavLink to={"/about"}>
+                                <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                    About Us
+                                </li>
+                            </NavLink>
+                            <NavLink to={"/plans"}>
+                                <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                    Plans
+                                </li>
+                            </NavLink>
+                            <NavLink to={"contact"}>
+                                <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                    Contact
+                                </li>
+                            </NavLink>
+                            <NavLink to={"faq"}>
+                                <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                    FAQ
+                                </li>
+                            </NavLink>
                         </ul>
                         <NavLink to={"/register"}>
                             <button className="px-8 py-3 bg-gradient-to-r from-[#903eff] via-transparent to-indigo-900 h-max w-max rounded-full text-white">

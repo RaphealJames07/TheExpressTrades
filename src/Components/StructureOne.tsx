@@ -1,12 +1,17 @@
-import Footer from "../Components/Footer";
-import Header from "../Components/Header";
+import Footer from "./Footer";
+import Header from "./Header";
 import logo from "../assets/TheExpressTradesLogo.svg";
 import {useEffect, useState} from "react";
 import "../index.css";
 import {NavLink} from "react-router-dom";
 import {GiHamburgerMenu} from "react-icons/gi";
+import React from "react";
 
-const Structure = () => {
+interface StructureOneProps {
+    content: () => JSX.Element;
+}
+
+const StructureOne: React.FC<StructureOneProps> = ({content}) => {
     const [showHeader2, setShowHeader2] = useState(false);
     const [smallScreen, setSmallScreen] = useState(false);
     const [dropNav, setDropNav] = useState(false);
@@ -52,21 +57,31 @@ const Structure = () => {
                             </div>
                             <div className="w-max h-full flex gap-10 items-center text-lg font-semibold z-10 phone:hidden">
                                 <ul className="w-max h-full flex items-center gap-10 text-white ">
-                                    <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                        Home
-                                    </li>
-                                    <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                        About Us
-                                    </li>
-                                    <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                        Plans
-                                    </li>
-                                    <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                        Contact
-                                    </li>
-                                    <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                        FAQ
-                                    </li>
+                                    <NavLink to={"/"}>
+                                        <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                            Home
+                                        </li>
+                                    </NavLink>
+                                    <NavLink to={"/about"}>
+                                        <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                            About Us
+                                        </li>
+                                    </NavLink>
+                                    <NavLink to={"/plans"}>
+                                        <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                            Plans
+                                        </li>
+                                    </NavLink>
+                                    <NavLink to={"contact"}>
+                                        <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                            Contact
+                                        </li>
+                                    </NavLink>
+                                    <NavLink to={"faq"}>
+                                        <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
+                                            FAQ
+                                        </li>
+                                    </NavLink>
                                 </ul>
                                 <NavLink to={"/register"}>
                                     <button className="px-8 py-3 bg-gradient-to-r from-[#903eff] via-transparent to-indigo-900 h-max w-max rounded-full text-white">
@@ -118,10 +133,7 @@ const Structure = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-[120vh] phone:h-[80vh] flex phone:flex-col-reverse "></div>
-                    <div className="w-full h-max">
-                        {/* More Home Contents */}
-                    </div>
+                    <div className="w-full h-max">{content()}</div>
                 </div>
                 <Footer />
             </div>
@@ -129,4 +141,4 @@ const Structure = () => {
     );
 };
 
-export default Structure;
+export default StructureOne;
