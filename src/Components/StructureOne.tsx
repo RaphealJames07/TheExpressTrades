@@ -133,7 +133,7 @@ const StructureOne: React.FC<StructureOneProps> = ({content}) => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-max">{content()}</div>
+                    <div className="w-full h-max pt-24">{content()}</div>
                 </div>
                 <Footer />
             </div>

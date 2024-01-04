@@ -1,8 +1,47 @@
 import {NavLink} from "react-router-dom";
 import StructureOne from "../Components/StructureOne";
+import {useState} from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const Verify = () => {
     const VerifyContent = () => {
+        const [otp, setOtp] = useState("");
+        const [loading, setLoading] = useState(false);
+        const token = localStorage.getItem("verifyToken");
+        const nav = useNavigate();
+
+        const handleVerify = (e) => {
+            e.preventDefault();
+            if (!otp) {
+                toast.error("Please enter your OTP");
+            } else {
+                setLoading(true);
+                const toastLoadingId = toast.loading("Please wait...");
+                const url = `https://express-trades.onrender.com/api/v1/user/verify/${token}`;
+                const data = {otp: otp};
+                axios
+                    .post(url, data)
+                    .then((response) => {
+                        setLoading(false);
+                        toast.dismiss(toastLoadingId);
+                        console.log(response);
+                        toast.success(response?.data?.message, {
+                            duration: 5000,
+                        });
+                        setTimeout(() => {
+                            nav("/login");
+                        }, 6000);
+                    })
+                    .catch((error) => {
+                        toast.dismiss(toastLoadingId);
+                        setLoading(false);
+                        toast.error(error?.response?.data?.message);
+                    });
+            }
+        };
+
         return (
             <>
                 <div className="w-full h-max flex items-center justify-center py-6 flex-col gap-6 phone:pt-28 pb-32 phone:pb-48">
@@ -16,10 +55,16 @@ const Verify = () => {
                                 type="text"
                                 placeholder="Enter 5 digit code"
                                 className="w-1/2 h-14 border border-gray-300 rounded-md pl-3 placeholder:text-gray-600 outline-none"
+                                value={otp}
+                                onChange={(e) => setOtp(e.target.value)}
                             />
                         </div>
-                        <button className="px-12 py-3 shadow-2xl bg-gradient-to-r from-[#903eff] to-indigo-600 h-max w-max rounded-lg text-white text-lg hover:bg-gradient-to-l hover:from-[#903eff] hover:to-indigo-600">
-                            VERIFY
+                        <button
+                            className="px-12 py-3 shadow-2xl bg-gradient-to-r from-[#903eff] to-indigo-600 h-max w-max rounded-lg text-white text-lg hover:bg-gradient-to-l hover:from-[#903eff] hover:to-indigo-600"
+                            disabled={loading}
+                            onClick={handleVerify}
+                        >
+                            {loading ? "Loading..." : "VERIFY"}
                         </button>
                         <p className="text-lg font-semibold text-[#66cc33]">
                             Back to &nbsp;

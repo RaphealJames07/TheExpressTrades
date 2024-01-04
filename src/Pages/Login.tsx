@@ -1,8 +1,75 @@
 import {NavLink} from "react-router-dom";
 import StructureOne from "../Components/StructureOne";
+import {useState} from "react";
+import toast from "react-hot-toast";
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
     const LoginContent = () => {
+        const [email, setEmail] = useState("");
+        const [password, setPassword] = useState("");
+        const [loading, setLoading] = useState(false);
+        const nav = useNavigate();
+        const handleReSendOtp = () => {
+            const data = {email: email};
+            const url =
+                "https://express-trades.onrender.com/api/v1/user/resend-verification-otp";
+
+            axios
+                .post(url, data)
+                .then((res) => {
+                    console.log(res);
+                    const token = res?.data?.token;
+                    localStorage.setItem("verifyToken", token);
+                    nav("/user");
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        };
+
+        const handleLogin = (e) => {
+            e.preventDefault();
+            if (!email || !password) {
+                toast.error("All fields are required");
+            } else {
+                const toastLoadingId = toast.loading("Please wait...");
+                setLoading(true);
+                const url =
+                    "https://express-trades.onrender.com/api/v1/user/sign-in";
+                const data = {email: email, password: password};
+                axios
+                    .post(url, data)
+                    .then((response) => {
+                        setLoading(false);
+                        toast.dismiss(toastLoadingId);
+                        console.log(response);
+                    })
+                    .catch((error) => {
+                        setLoading(false);
+                        toast.dismiss(toastLoadingId);
+
+                        if (
+                            error?.response?.data?.message ===
+                            "Email Not Verified, Please verify your email to log in."
+                        ) {
+                            handleReSendOtp();
+                            toast.error(error?.response?.data?.message, {
+                                duration: 5000,
+                            });
+                            setTimeout(() => {
+                                nav("/verify");
+                            }, 6000);
+                        } else {
+                            toast.error(error?.response?.data?.message);
+                        }
+                        console.log(error);
+                    });
+            }
+            toast.loading;
+        };
+
         return (
             <>
                 <div className="w-full h-max flex items-center justify-center py-6 flex-col gap-6 phone:pt-28">
@@ -19,6 +86,8 @@ const Login = () => {
                                 type="email"
                                 placeholder="Enter your email"
                                 className="w-full h-14 border border-gray-300 rounded-md pl-3 placeholder:text-gray-600 outline-none"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div className="w-full h-max flex flex-col gap-3 mb-10 phone:mb-6">
@@ -29,6 +98,8 @@ const Login = () => {
                                 type="password"
                                 placeholder="Enter your password"
                                 className="w-full h-14 border border-gray-300 rounded-md pl-3 placeholder:text-gray-600 outline-none"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                             <p>
                                 Forgot your password?
@@ -40,8 +111,12 @@ const Login = () => {
                             </p>
                         </div>
 
-                        <button className="px-12 py-3 bg-gradient-to-r from-[#903eff] to-indigo-600 h-max w-max rounded-lg text-white text-lg hover:bg-gradient-to-l hover:from-[#903eff] hover:to-indigo-600">
-                            SIGN IN
+                        <button
+                            className="px-12 py-3 bg-gradient-to-r from-[#903eff] to-indigo-600 h-max w-max rounded-lg text-white text-lg hover:bg-gradient-to-l hover:from-[#903eff] hover:to-indigo-600"
+                            disabled={loading}
+                            onClick={handleLogin}
+                        >
+                            {loading ? "Loading..." : "SIGN IN"}
                         </button>
                         <p className="text-lg font-semibold text-[#66cc33]">
                             Don't have an account?{" "}
