@@ -13,6 +13,7 @@ import Invest from "./Pages/Invest";
 import Withdraw from "./Pages/Withdraw";
 import MyAccount from "./Pages/MyAccount";
 import Deposit from "./Pages/Deposit";
+import ForgetPassword from "./Pages/ForgetPassword";
 
 const router = createBrowserRouter([
     {
@@ -60,6 +61,14 @@ const router = createBrowserRouter([
         element: (
             <>
                 <Login />
+            </>
+        ),
+    },
+    {
+        path: "/forget-password",
+        element: (
+            <>
+                <ForgetPassword />
             </>
         ),
     },
