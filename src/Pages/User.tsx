@@ -8,7 +8,7 @@ import {MdAccountBox} from "react-icons/md";
 import {GrSupport} from "react-icons/gr";
 import DashboardHeader from "../Components/DashboardHeader";
 import DashboardFooter from "../Components/DashboardFooter";
-import Dashboard from "./Dashboard";
+// import Dashboard from "./Dashboard";
 import {Outlet} from "react-router";
 
 const User = () => {
@@ -91,7 +91,7 @@ const User = () => {
                 </div>
                 <div className="w-[78%] h-screen overflow-y-auto relative">
                     <DashboardHeader />
-                    <div className="w-full min-h-[81vh] h-max mt-16 ">
+                    <div className="w-full min-h-[81vh] h-max mt-16 bg-[#f5f6fa]">
                         <Outlet />
                     </div>
                     <DashboardFooter />
