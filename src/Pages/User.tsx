@@ -15,7 +15,7 @@ const User = () => {
     return (
         <>
             <div className="w-full h-max flex">
-                <div className="w-[22%] h-screen bg-[#5f2525] px-5 relative ">
+                <div className="w-[22%] h-screen phone:hidden bg-[#5f2525] px-5 relative ">
                     <div className="w-full h-16 flex items-center top-0 left-0">
                         <img src={logo} alt="" className="w-60 h-14" />
                     </div>
@@ -89,7 +89,7 @@ const User = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-[78%] h-screen overflow-y-auto relative">
+                <div className="w-[78%] phone:w-full h-screen overflow-y-auto relative">
                     <DashboardHeader />
                     <div className="w-full min-h-[81vh] h-max mt-16 bg-[#f5f6fa]">
                         <Outlet />
