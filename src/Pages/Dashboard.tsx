@@ -4,9 +4,9 @@ import {FiInfo, FiPlusCircle} from "react-icons/fi";
 const Dashboard = () => {
     return (
         <div className="w-full h-max ">
-            <div className="w-full h-max flex flex-col px-10 py-8 gap-3">
+            <div className="w-full h-max flex flex-col px-10 phone:px-4 py-8 gap-3">
                 <p className="text-base text-[rgb(128,148,174)]">Welcome,</p>
-                <div className="w-full flex justify-between">
+                <div className="w-full flex phone:flex-col phone:gap-4 justify-between">
                     <p className="text-[rgb(54,74,99)] text-4xl">James Jnr</p>
                     <div className="w-max h-max flex items-center gap-4">
                         <button className="w-max h-max flex items-center gap-2 bg-[#e14954] rounded text-white px-6 py-2 text-sm font-semibold">
@@ -25,14 +25,14 @@ const Dashboard = () => {
                 <div className="w-full h-12 cursor-pointer bg-sky-300 mt-8">
                     Tradeview scroll content comes here
                 </div>
-                <div className="w-max h-32 bg-white border flex flex-col justify-between border-gray-200 rounded p-6">
+                <div className="w-max phone:w-full h-32 bg-white border flex flex-col justify-between border-gray-200 rounded p-6">
                     <p className="flex items-center gap-1 text-[#526484]">
                         Available Balance{" "}
                         <span>
                             <FiInfo />
                         </span>
                     </p>
-                    <div className="w-max h-max flex justify-between gap-20">
+                    <div className="w-max h-max flex justify-between gap-20 phone:gap-0 phone:justify-between phone:w-full">
                         <p className="text-4xl text-[rgb(82,100,132)]">
                             0.000228 BTC
                         </p>
@@ -42,7 +42,7 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="w-full h-[80vh] flex items-center justify-center mt-5">
-                    <div className="w-[80%] h-full rounded border border-gray-200"></div>
+                    <div className="w-[80%] phone:w-full bg-white h-full rounded border border-gray-200"></div>
                 </div>
             </div>
             <div className="w-full h-max border border-[#cd9f0c] bg-[#fef7e2] mt-10">
@@ -54,7 +54,7 @@ const Dashboard = () => {
                     </button>
                 </div>
             </div>
-            <div className="w-full h-max flex justify-center pl-20 flex-col gap-2 p-5 mt-5 border-t border-gray-300 ">
+            <div className="w-full h-max flex justify-center pl-20 phone:pl-4 flex-col gap-2 p-5 mt-5 border-t border-gray-300 ">
                 <p className="text-[rgb(54,74,99)] text-xl font-bold">We are here to help you!</p>
                 <p className="text-[rgb(128,148,174)]">
                     port ticket, manage request, report an issues. Our team
