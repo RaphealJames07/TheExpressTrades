@@ -12,7 +12,10 @@ import DashboardFooter from "../Components/DashboardFooter";
 import {Outlet} from "react-router";
 import {NavLink} from "react-router-dom";
 
+
 const User = () => {
+
+
     return (
         <>
             <div className="w-full h-max flex">
@@ -134,6 +137,7 @@ const User = () => {
                     <DashboardFooter />
                 </div>
             </div>
+            
         </>
     );
 };

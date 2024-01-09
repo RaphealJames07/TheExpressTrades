@@ -11,10 +11,10 @@ const InvestConfirm = () => {
                         <FaArrowLeft />
                         Back to plan
                     </p>
-                    <p className="text-4xl text-[rgb(54,74,99)]">
+                    <p className="text-4xl phone:text-3xl text-[rgb(54,74,99)]">
                         Ready to get started?
                     </p>
-                    {/* <div className="w-[60%] h-max border border-[rgb(195,70,60)] bg-[#fceae9] flex flex-col gap-2 justify-center pl-16 py-4 mt-8 px-4">
+                    {/* <div className="w-[60%] phone:w-full h-max border border-[rgb(195,70,60)] bg-[#fceae9] flex flex-col gap-2 justify-center pl-16 py-4 mt-8 px-4">
                         <p className="text-sm text-[rgb(195,70,60)]">
                             Insufficient balance!
                         </p>
@@ -27,7 +27,7 @@ const InvestConfirm = () => {
                             Add
                         </button>
                     </div> */}
-                    <div className="w-[60%] h-20 border border-gray-300 bg-white flex items-center mt-8 px-4">
+                    <div className="w-[60%] phone:w-full h-20 border border-gray-300 bg-white flex items-center mt-8 px-4">
                         <div className="w-max h-max flex items-center gap-2">
                             <BiSolidOffer className="w-8 h-8 text-[#8094ae]" />
                             <p className="w-max h-max flex flex-col text-sm font-medium text-[rgb(54,74,99)]">
@@ -38,16 +38,16 @@ const InvestConfirm = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="w-[60%] h-max mt-6 flex flex-col gap-3">
+                    <div className="w-[60%] phone:w-full h-max mt-6 flex flex-col gap-3">
                         <p className="text-[rgb(52,67,87)] font-medium text-sm">
                             Enter Your Amount
                         </p>
                         <div className="w-full h-16 border border-gray-300 bg-white active:border-red-200 active:border focus:border-red-200 flex items-center ">
                             <input
                                 type="text"
-                                className="w-[92%] h-full outline-none border-none pl-3 "
+                                className="w-[92%] phone:w-[85%] h-full outline-none border-none pl-3 "
                             />
-                            <p className="border-l border-l-gray-400 pl-3">
+                            <p className="w-14 border-l border-l-gray-400 pl-3">
                                 USD
                             </p>
                         </div>
@@ -56,7 +56,7 @@ const InvestConfirm = () => {
                             USD
                         </p>
                     </div>
-                    <div className="w-[60%] h-20 border border-gray-300 bg-white flex items-center mt-8 px-4">
+                    <div className="w-[60%] phone:w-full h-20 border border-gray-300 bg-white flex items-center mt-8 px-4">
                         <div className="w-max h-max flex items-center gap-2">
                             <BiSolidOffer className="w-8 h-8 text-[#8094ae]" />
                             <p className="w-max h-max flex flex-col text-sm font-medium text-[rgb(54,74,99)]">
@@ -67,7 +67,7 @@ const InvestConfirm = () => {
                             </p>
                         </div>
                     </div>
-                    <div className="w-[60%] h-20 flex items-center justify-center">
+                    <div className="w-[60%] phone:w-full h-20 flex items-center justify-center">
                         <button className="w-full h-max flex items-center justify-center gap-2 bg-[#e14954] rounded text-white px-6 py-3 text-sm font-semibold">
                             CONTINUE
                             <FaArrowRight />
