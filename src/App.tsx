@@ -16,6 +16,7 @@ import Deposit from "./Pages/Deposit";
 import ForgetPassword from "./Pages/ForgetPassword";
 import Verify from "./Pages/Verify";
 import Transactions from "./Pages/Transactions";
+import InvestConfirm from "./Pages/InvestConfirm";
 
 const router = createBrowserRouter([
     {
@@ -115,6 +116,14 @@ const router = createBrowserRouter([
                 element: (
                     <>
                         <Invest />
+                    </>
+                ),
+            },
+            {
+                path: "new-investment/100",
+                element: (
+                    <>
+                        <InvestConfirm />
                     </>
                 ),
             },
