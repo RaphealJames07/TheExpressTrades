@@ -44,7 +44,7 @@ const Login = () => {
                         setLoading(false);
                         toast.dismiss(toastLoadingId);
                         console.log(response);
-                        nav("/user");
+                        nav("/user/dashboard");
                     })
                     .catch((error) => {
                         setLoading(false);
