@@ -12,6 +12,7 @@ import logo from "../assets/TheExpressTradesLogo.svg";
 import {BsGrid} from "react-icons/bs";
 import {MdAccountBox} from "react-icons/md";
 import {GrSupport} from "react-icons/gr";
+import {NavLink} from "react-router-dom";
 
 const DashboardHeader = () => {
     const [showProfile, setShowProfile] = useState<boolean>(false);
@@ -36,7 +37,10 @@ const DashboardHeader = () => {
                 <p>43,739.00 USD / BTC</p>
             </div>
             <div className="w-max h-max phone:flex hidden">
-                <IoMdMenu className="w-8 h-8" onClick={handleOpenSideNav} />
+                <IoMdMenu
+                    className="w-8 h-8 cursor-pointer"
+                    onClick={handleOpenSideNav}
+                />
             </div>
             <div className="w-max h-max flex items-center gap-8 phone:gap-4">
                 <div
@@ -119,11 +123,13 @@ const DashboardHeader = () => {
             >
                 <div className="w-full h-screen hidden phone:flex phone:flex-col bg-[#5f2525] relative ">
                     <div className="w-full h-16 flex items-center justify-between top-0 left-0">
-                        <img
-                            src={logo}
-                            alt=""
-                            className="w-60 phone:w-52 h-14"
-                        />
+                        <NavLink to={"/"}>
+                            <img
+                                src={logo}
+                                alt=""
+                                className="w-60 phone:w-52 h-14"
+                            />
+                        </NavLink>
                         <span className="w-max h-max px-4 text-white hidden phone:flex">
                             <FaArrowLeft
                                 className="w-6 h-6"
@@ -147,69 +153,91 @@ const DashboardHeader = () => {
                                     10.00 USD
                                 </p>
                             </div>
-                            <div className="w-max h-max items-center justify-center">
-                                <FiBarChart2 className="w-9 h-9 rounded p-2 cursor-pointer bg-white" />
-                            </div>
+                            <NavLink to={"/user/dashboard"}>
+                                <div className="w-max h-max items-center justify-center">
+                                    <FiBarChart2 className="w-9 h-9 rounded p-2 cursor-pointer bg-white" />
+                                </div>
+                            </NavLink>
                         </div>
                         <p className="flex justify-between text-[rgb(245,191,195)] font-medium text-sm px-6">
                             Deposit in orders <span>0 BTC</span>
                         </p>
                         <div className="w-full h-max flex justify-between px-6">
-                            <button className="w-max h-max flex items-center justify-center px-6 py-3 rounded text-white text-sm font-semibold bg-[#e14954]">
-                                DEPOSIT
-                            </button>
-                            <button className="w-max h-max flex items-center justify-center px-10 py-3 rounded text-white text-sm font-semibold bg-[#1ee0ac]">
-                                INVEST
-                            </button>
+                            <NavLink to={"/user/deposit"}>
+                                <button className="w-max h-max flex items-center justify-center px-6 py-3 rounded text-white text-sm font-semibold bg-[#e14954]">
+                                    DEPOSIT
+                                </button>
+                            </NavLink>
+                            <NavLink to={"/user/invest"}>
+                                <button className="w-max h-max flex items-center justify-center px-10 py-3 rounded text-white text-sm font-semibold bg-[#1ee0ac]">
+                                    INVEST
+                                </button>
+                            </NavLink>
                         </div>
                         <div className="w-full h-max flex flex-col gap-3 mt-6 px-2">
                             <p className="px-6 text-[rgba(245,191,195,0.8)] font-bold text-xs">
                                 MENU
                             </p>
                             <div className="w-full h-max flex flex-col gap-2">
-                                <div className="w-full h-11 flex items-center text-white bg-[#7c3131] transition-all duration-400 gap-4 px-6 rounded-full cursor-pointer">
-                                    <BsGrid className="w-6 h-6" />
-                                    <p className="font-medium text-base">
-                                        Dashboard
-                                    </p>
-                                </div>
-                                <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
-                                    <LuWallet className="w-6 h-6" />
-                                    <p className="font-medium text-base">
-                                        My Plans
-                                    </p>
-                                </div>
-                                <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
-                                    <LuWallet className="w-6 h-6" />
-                                    <p className="font-medium text-base">
-                                        Invest
-                                    </p>
-                                </div>
-                                <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
-                                    <LuRepeat className="w-6 h-6" />
-                                    <p className="font-medium text-base">
-                                        Transactions
-                                    </p>
-                                </div>
-                                <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
-                                    <FaRegCreditCard className="w-6 h-6" />
-                                    <p className="font-medium text-base">
-                                        Withdraw
-                                    </p>
-                                </div>
-                                <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
-                                    <MdAccountBox className="w-6 h-6" />
-                                    <p className="font-medium text-base">
-                                        Account
-                                    </p>
-                                </div>
+                                <NavLink to={"/user/dashboard"}>
+                                    <div className="w-full h-11 flex items-center text-white bg-[#7c3131] transition-all duration-400 gap-4 px-6 rounded-full cursor-pointer">
+                                        <BsGrid className="w-6 h-6" />
+                                        <p className="font-medium text-base">
+                                            Dashboard
+                                        </p>
+                                    </div>
+                                </NavLink>
+                                <NavLink to={"/user/my-plans"}>
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                        <LuWallet className="w-6 h-6" />
+                                        <p className="font-medium text-base">
+                                            My Plans
+                                        </p>
+                                    </div>
+                                </NavLink>
+                                <NavLink to={"/user/invest"}>
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                        <LuWallet className="w-6 h-6" />
+                                        <p className="font-medium text-base">
+                                            Invest
+                                        </p>
+                                    </div>
+                                </NavLink>
+                                <NavLink to={"/user/transactions"}>
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                        <LuRepeat className="w-6 h-6" />
+                                        <p className="font-medium text-base">
+                                            Transactions
+                                        </p>
+                                    </div>
+                                </NavLink>
+                                <NavLink to={"/user/withdraw"}>
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                        <FaRegCreditCard className="w-6 h-6" />
+                                        <p className="font-medium text-base">
+                                            Withdraw
+                                        </p>
+                                    </div>
+                                </NavLink>
+                                <NavLink to={"/user/my-account"}>
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                        <MdAccountBox className="w-6 h-6" />
+                                        <p className="font-medium text-base">
+                                            Account
+                                        </p>
+                                    </div>
+                                </NavLink>
                             </div>
                         </div>
                         <div className="w-full h-max">
-                            <div className="w-full h-10 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
-                                <GrSupport className="w-4 h-4" />
-                                <p className="font-medium text-sm">Support</p>
-                            </div>
+                            <NavLink to={"/contact"}>
+                                <div className="w-full h-10 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                    <GrSupport className="w-4 h-4" />
+                                    <p className="font-medium text-sm">
+                                        Support
+                                    </p>
+                                </div>
+                            </NavLink>
                         </div>
                     </div>
                 </div>
