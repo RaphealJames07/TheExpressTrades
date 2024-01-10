@@ -27,8 +27,8 @@ const Dashboard = () => {
                 <p className="text-sm text-[#526484]">
                     At a glance summary of your account.
                 </p>
-                <div className="w-full h-12 cursor-pointer bg-sky-300 mt-8">
-                    Tradeview scroll content comes here
+                <div className="w-full h-12 cursor-pointer bg-sky-300 mt-8 flex items-center">
+                    Subscribe to get BTC and ETH current rates and live changes
                 </div>
                 <div className="w-max phone:w-full h-32 bg-white border flex flex-col justify-between border-gray-200 rounded p-6">
                     <p className="flex items-center gap-1 text-[#526484]">
@@ -47,7 +47,12 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <div className="w-full h-[80vh] flex items-center justify-center mt-5">
-                    <div className="w-[80%] phone:w-full bg-white h-full rounded border border-gray-200"></div>
+                    <div className="w-[80%] phone:w-full bg-white h-full rounded border border-gray-200">
+                        <p>
+                            Sub Scribe to get Charts for BTC or ETH current and
+                            live chart
+                        </p>
+                    </div>
                 </div>
             </div>
             <div className="w-full h-max border border-[#cd9f0c] bg-[#fef7e2] mt-10">
