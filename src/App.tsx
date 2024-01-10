@@ -17,6 +17,9 @@ import ForgetPassword from "./Pages/ForgetPassword";
 import Verify from "./Pages/Verify";
 import Transactions from "./Pages/Transactions";
 import InvestConfirm from "./Pages/InvestConfirm";
+import Profile from "./Pages/Profile";
+import Security from "./Pages/Security";
+import Payouts from "./Pages/payouts";
 
 const router = createBrowserRouter([
     {
@@ -150,6 +153,32 @@ const router = createBrowserRouter([
                         <MyAccount />
                     </>
                 ),
+                children: [
+                    {
+                        path: "profile",
+                        element: (
+                            <>
+                                <Profile />
+                            </>
+                        ),
+                    },
+                    {
+                        path: "security",
+                        element: (
+                            <>
+                                <Security />
+                            </>
+                        ),
+                    },
+                    {
+                        path: "payouts",
+                        element: (
+                            <>
+                                <Payouts />
+                            </>
+                        ),
+                    },
+                ],
             },
             {
                 path: "deposit",

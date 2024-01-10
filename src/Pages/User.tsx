@@ -107,7 +107,7 @@ const User = () => {
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/my-account"}>
+                                <NavLink to={"/user/my-account/profile"}>
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <MdAccountBox className="w-6 h-6" />
                                         <p className="font-medium text-base">
