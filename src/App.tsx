@@ -19,7 +19,8 @@ import Transactions from "./Pages/Transactions";
 import InvestConfirm from "./Pages/InvestConfirm";
 import Profile from "./Pages/Profile";
 import Security from "./Pages/Security";
-import Payouts from "./Pages/payouts";
+import Payouts from "./Pages/Payouts";
+import Notification from "./Pages/Notification";
 
 const router = createBrowserRouter([
     {
@@ -143,6 +144,14 @@ const router = createBrowserRouter([
                 element: (
                     <>
                         <Withdraw />
+                    </>
+                ),
+            },
+            {
+                path: "notification",
+                element: (
+                    <>
+                        <Notification />
                     </>
                 ),
             },

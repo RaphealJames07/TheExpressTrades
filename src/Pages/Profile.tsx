@@ -12,52 +12,62 @@ const Profile = () => {
                 </p>
                 <div className="w-full h-max border mt-5 border-gray-300 rounded bg-white">
                     <div className="w-full h-20 border-b border-b-gray-300 flex justify-between items-center cursor-pointer px-4">
-                        <p className="text-[rgb(82,100,132)]">Full Name</p>
-                        <p className="text-[rgb(54,74,99)] text-base">
-                            James Jnr
-                        </p>
+                        <div className="w-1/2 h-full flex items-center justify-between phone:flex-col phone:items-start phone:justify-center phone:gap-2">
+                            <p className="text-[rgb(82,100,132)] text-sm">Full Name</p>
+                            <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
+                                James Jnr
+                            </p>
+                        </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
-                            <FaAngleRight className="w-4 h-4" />
+                            <FaAngleRight className="w-3 h-3" />
                         </span>
                     </div>
                     <div className="w-full h-20 border-b border-b-gray-300 flex justify-between items-center cursor-pointer px-4">
-                        <p className="text-[rgb(82,100,132)]">Full Name</p>
-                        <p className="text-[rgb(54,74,99)] text-base">
-                            James Jnr
-                        </p>
+                        <div className="w-1/2 h-full flex items-center justify-between phone:flex-col phone:items-start phone:justify-center phone:gap-2">
+                            <p className="text-[rgb(82,100,132)] text-sm">Full Name</p>
+                            <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
+                                James Jnr
+                            </p>
+                        </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
-                            <FaAngleRight className="w-4 h-4" />
+                            <FaAngleRight className="w-3 h-3" />
                         </span>
                     </div>
                     <div className="w-full h-20 border-b border-b-gray-300 flex justify-between items-center cursor-pointer px-4">
-                        <p className="text-[rgb(82,100,132)]">Full Name</p>
-                        <p className="text-[rgb(54,74,99)] text-base">
-                            James Jnr
-                        </p>
+                        <div className="w-1/2 h-full flex items-center justify-between phone:flex-col phone:items-start phone:justify-center phone:gap-2">
+                            <p className="text-[rgb(82,100,132)] text-sm">Full Name</p>
+                            <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
+                                James Jnr
+                            </p>
+                        </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
-                            <FaAngleRight className="w-4 h-4" />
+                            <FaAngleRight className="w-3 h-3" />
                         </span>
                     </div>
                     <div className="w-full h-20 border-b border-b-gray-300 flex justify-between items-center cursor-pointer px-4">
-                        <p className="text-[rgb(82,100,132)]">Full Name</p>
-                        <p className="text-[rgb(54,74,99)] text-base">
-                            James Jnr
-                        </p>
+                        <div className="w-1/2 h-full flex items-center justify-between phone:flex-col phone:items-start phone:justify-center phone:gap-2">
+                            <p className="text-[rgb(82,100,132)] text-sm">Full Name</p>
+                            <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
+                                James Jnr
+                            </p>
+                        </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
-                            <FaAngleRight className="w-4 h-4" />
+                            <FaAngleRight className="w-3 h-3" />
                         </span>
                     </div>
                     <div className="w-full h-20 flex justify-between items-center cursor-pointer px-4">
-                        <p className="text-[rgb(82,100,132)]">Full Name</p>
-                        <p className="text-[rgb(54,74,99)] text-base">
-                            James Jnr
-                        </p>
+                        <div className="w-1/2 h-full flex items-center justify-between phone:flex-col phone:items-start phone:justify-center phone:gap-2">
+                            <p className="text-[rgb(82,100,132)] text-sm">Full Name</p>
+                            <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
+                                James Jnr
+                            </p>
+                        </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
-                            <FaAngleRight className="w-4 h-4" />
+                            <FaAngleRight className="w-3 h-3" />
                         </span>
                     </div>
                 </div>
-            </div>{" "}
+            </div>
         </>
     );
 };

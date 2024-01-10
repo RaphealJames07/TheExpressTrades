@@ -2,7 +2,7 @@ import {FiPlusCircle} from "react-icons/fi";
 import {NavLink} from "react-router-dom";
 
 const MyPlans = () => {
-    const myPlans = ["lol"];
+    const myPlans = [];
     return (
         <>
             <div className="w-full h-max">
@@ -19,83 +19,53 @@ const MyPlans = () => {
                                     </p>
                                     <div className="w-full phone:w-max h-28 border border-gray-500 rounded bg-gray-300 flex flex-col">
                                         <div className="w-full h-1/2 border-b border-b-gray-500 flex">
-                                            <div className="w-1/5 phone:w-36 h-full text-lg flex items-center justify-center font-semibold border-r border-r-gray-500">
+                                            <div className="w-1/6 phone:w-24 text-center h-full text-sm flex items-center justify-center font-semibold border-r border-r-gray-500">
                                                 Plan Name
                                             </div>
-                                            <div className="w-1/5 phone:w-36 h-full text-lg flex items-center text-center justify-center font-semibold border-r border-r-gray-500">
+                                            <div className="w-1/6 phone:w-24 text-center h-full text-sm flex items-center  justify-center font-semibold border-r border-r-gray-500">
                                                 Amount Deposited
                                             </div>
-                                            <div className="w-1/5 phone:w-36 h-full text-lg flex items-center justify-center font-semibold border-r border-r-gray-500">
+                                            <div className="w-1/6 phone:w-24 text-center h-full text-sm flex items-center justify-center font-semibold border-r border-r-gray-500">
                                                 Total Return
                                             </div>
-                                            <div className="w-1/5 phone:w-36 h-full text-lg flex items-center justify-center font-semibold border-r border-r-gray-500">
+                                            <div className="w-1/6 phone:w-24 text-center h-full text-sm flex items-center justify-center font-semibold border-r border-r-gray-500">
                                                 Duration
                                             </div>
-                                            <div className="w-1/5 phone:w-36 h-full text-lg flex items-center justify-center font-semibold">
+                                            <div className="w-1/6 phone:w-24 text-center h-full text-sm flex items-center justify-center font-semibold border-r border-r-gray-500">
                                                 Interest
+                                            </div>
+                                            <div className="w-1/6 phone:w-24 text-center h-full text-sm flex items-center justify-center font-semibold border-r border-r-gray-500">
+                                                Date Started
+                                            </div>
+                                            <div className="w-1/6 phone:w-24 text-center h-full text-sm flex items-center justify-center font-semibold">
+                                                Date Completed
                                             </div>
                                         </div>
                                         <div className="w-full h-1/2 flex">
-                                            <div className="w-1/5 phone:w-36 h-full flex items-center justify-center border-r border-r-gray-500">
+                                            <div className="w-1/6 phone:w-24 text-center text-sm h-full flex items-center justify-center border-r border-r-gray-500">
                                                 Silver Plan
                                             </div>
-                                            <div className="w-1/5 phone:w-36 h-full flex items-center justify-center border-r border-r-gray-500">
+                                            <div className="w-1/6 phone:w-24 text-center text-sm h-full flex items-center justify-center border-r border-r-gray-500">
                                                 $3,000
                                             </div>
-                                            <div className="w-1/5 phone:w-36 h-full flex items-center justify-center border-r border-r-gray-500">
+                                            <div className="w-1/6 phone:w-24 text-center text-sm h-full flex items-center justify-center border-r border-r-gray-500">
                                                 $15,000
                                             </div>
-                                            <div className="w-1/5 phone:w-36 h-full flex items-center justify-center border-r border-r-gray-500">
+                                            <div className="w-1/6 phone:w-24 text-center text-sm h-full flex items-center justify-center border-r border-r-gray-500">
                                                 7 days
                                             </div>
-                                            <div className="w-1/5 phone:w-36 h-full flex items-center justify-center">
+                                            <div className="w-1/6 phone:w-24 text-center text-sm h-full flex items-center justify-center border-r border-r-gray-500">
                                                 10%
+                                            </div>
+                                            <div className="w-1/6 phone:w-24 text-center text-sm h-full flex items-center justify-center border-r border-r-gray-500">
+                                                10-01-2024
+                                            </div>
+                                            <div className="w-1/6 phone:w-24 text-center text-sm h-full flex items-center justify-center ">
+                                                10-01-2024
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="w-full h-max flex flex-col gap-2 overflow-y-auto">
-                                    <p className="text-[rgb(54,74,99)] text-lg font-semibold">
-                                        Plan #1234ABCD
-                                    </p>
-                                    <div className="w-full phone:w-max h-28 border border-gray-500 rounded bg-gray-300 flex flex-col">
-                                        <div className="w-full h-1/2 border-b border-b-gray-500 flex">
-                                            <div className="w-1/5 phone:w-36 h-full text-lg flex items-center justify-center font-semibold border-r border-r-gray-500">
-                                                Plan Name
-                                            </div>
-                                            <div className="w-1/5 phone:w-36 h-full text-lg flex items-center text-center justify-center font-semibold border-r border-r-gray-500">
-                                                Amount Deposited
-                                            </div>
-                                            <div className="w-1/5 phone:w-36 h-full text-lg flex items-center justify-center font-semibold border-r border-r-gray-500">
-                                                Total Return
-                                            </div>
-                                            <div className="w-1/5 phone:w-36 h-full text-lg flex items-center justify-center font-semibold border-r border-r-gray-500">
-                                                Duration
-                                            </div>
-                                            <div className="w-1/5 phone:w-36 h-full text-lg flex items-center justify-center font-semibold">
-                                                Interest
-                                            </div>
-                                        </div>
-                                        <div className="w-full h-1/2 flex">
-                                            <div className="w-1/5 phone:w-36 h-full flex items-center justify-center border-r border-r-gray-500">
-                                                Silver Plan
-                                            </div>
-                                            <div className="w-1/5 phone:w-36 h-full flex items-center justify-center border-r border-r-gray-500">
-                                                $3,000
-                                            </div>
-                                            <div className="w-1/5 phone:w-36 h-full flex items-center justify-center border-r border-r-gray-500">
-                                                $15,000
-                                            </div>
-                                            <div className="w-1/5 phone:w-36 h-full flex items-center justify-center border-r border-r-gray-500">
-                                                7 days
-                                            </div>
-                                            <div className="w-1/5 phone:w-36 h-full flex items-center justify-center">
-                                                10%
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
                             </div>
                         </>
                     ) : (

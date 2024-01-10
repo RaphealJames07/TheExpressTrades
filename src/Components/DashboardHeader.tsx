@@ -13,21 +13,30 @@ import {BsGrid} from "react-icons/bs";
 import {MdAccountBox} from "react-icons/md";
 import {GrSupport} from "react-icons/gr";
 import {NavLink} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 const DashboardHeader = () => {
     const [showProfile, setShowProfile] = useState<boolean>(false);
+    const [sideNav, setSideNav] = useState<boolean>(false);
+    const [notification, setNotification] = useState<boolean>(false);
 
     const handleShowProfile = () => {
         setShowProfile(!showProfile);
     };
-
-    const [sideNav, setSideNav] = useState<boolean>(false);
+    const handleShowNotification = () => {
+        setNotification(!notification);
+    };
 
     const handleOpenSideNav = () => {
         setSideNav(true);
     };
     const handleCloseSideNav = () => {
         setSideNav(false);
+    };
+    const nav = useNavigate();
+    const handleLogout = () => {
+        // localStorage.removeItem("token");
+        nav("/");
     };
 
     return (
@@ -94,23 +103,43 @@ const DashboardHeader = () => {
                                     </span>
                                 </p>
                             </div>
-                            <div className="w-full h-16 flex items-center px-5 border-b border-b-gray-200">
-                                <p className="flex gap-2 hover:text-[#e14954] transition-all duration-500 items-center font-semibold text-sm text-[rgb(82,100,132)]">
-                                    <IoSettingsOutline className="w-5  h-5" />
-                                    Account Settings
-                                </p>
-                            </div>
-                            <div className="w-full h-16 flex items-center px-5">
+                            <NavLink to={"/user/my-account/profile"}>
+                                <div className="w-full h-16 flex items-center px-5 border-b border-b-gray-200">
+                                    <p className="flex gap-2 hover:text-[#e14954] transition-all duration-500 items-center font-semibold text-sm text-[rgb(82,100,132)]">
+                                        <IoSettingsOutline className="w-5  h-5" />
+                                        Account Settings
+                                    </p>
+                                </div>
+                            </NavLink>
+                            <div
+                                className="w-full h-16 flex items-center px-5 "
+                                onClick={handleLogout}
+                            >
                                 <p className="flex gap-2 hover:text-[#e14954] transition-all duration-500 items-center font-semibold text-sm text-[rgb(82,100,132)]">
                                     <PiSignOutBold className="w-5  h-5" />
-                                    Account Settings
+                                    Signout
                                 </p>
                             </div>
                         </div>
                     ) : null}
                 </div>
-                <div className="cursor-pointer flex items-center text-gray-700 hover:text-gray-400 transition-all duration-500">
+                <div
+                    className="cursor-pointer flex items-center text-gray-700 hover:text-gray-400 transition-all duration-500 relative"
+                    onClick={handleShowNotification}
+                >
                     <IoMdNotificationsOutline className="w-6 h-6" />
+                    {notification ? (
+                        <div className="phone:w-[18rem] w-[20rem] h-max shadow border-t-2 border-t-red-400 rounded absolute right-0 top-10 bg-white">
+                            <div className="w-full h-12 flex items-center pl-5 text-[rgb(82,100,132)] text-smn border-b border-b-gray-300">
+                                Notifications
+                            </div>
+                            <NavLink to={"/user/notification"}>
+                                <div className="w-full h-12 flex items-center justify-center pl-5 text-[#e8757d] text-sm font-medium">
+                                    View All
+                                </div>
+                            </NavLink>
+                        </div>
+                    ) : null}
                 </div>
             </div>
             <Drawer
@@ -123,7 +152,7 @@ const DashboardHeader = () => {
             >
                 <div className="w-full h-screen hidden phone:flex phone:flex-col bg-[#5f2525] relative ">
                     <div className="w-full h-16 flex items-center justify-between top-0 left-0">
-                        <NavLink to={"/"}>
+                        <NavLink onClick={handleCloseSideNav} to={"/"}>
                             <img
                                 src={logo}
                                 alt=""
@@ -153,7 +182,10 @@ const DashboardHeader = () => {
                                     10.00 USD
                                 </p>
                             </div>
-                            <NavLink to={"/user/dashboard"}>
+                            <NavLink
+                                onClick={handleCloseSideNav}
+                                to={"/user/dashboard"}
+                            >
                                 <div className="w-max h-max items-center justify-center">
                                     <FiBarChart2 className="w-9 h-9 rounded p-2 cursor-pointer bg-white" />
                                 </div>
@@ -163,12 +195,18 @@ const DashboardHeader = () => {
                             Deposit in orders <span>0 BTC</span>
                         </p>
                         <div className="w-full h-max flex justify-between px-6">
-                            <NavLink to={"/user/deposit"}>
+                            <NavLink
+                                onClick={handleCloseSideNav}
+                                to={"/user/deposit"}
+                            >
                                 <button className="w-max h-max flex items-center justify-center px-6 py-3 rounded text-white text-sm font-semibold bg-[#e14954]">
                                     DEPOSIT
                                 </button>
                             </NavLink>
-                            <NavLink to={"/user/invest"}>
+                            <NavLink
+                                onClick={handleCloseSideNav}
+                                to={"/user/invest"}
+                            >
                                 <button className="w-max h-max flex items-center justify-center px-10 py-3 rounded text-white text-sm font-semibold bg-[#1ee0ac]">
                                     INVEST
                                 </button>
@@ -179,7 +217,10 @@ const DashboardHeader = () => {
                                 MENU
                             </p>
                             <div className="w-full h-max flex flex-col gap-2">
-                                <NavLink to={"/user/dashboard"}>
+                                <NavLink
+                                    onClick={handleCloseSideNav}
+                                    to={"/user/dashboard"}
+                                >
                                     <div className="w-full h-11 flex items-center text-white bg-[#7c3131] transition-all duration-400 gap-4 px-6 rounded-full cursor-pointer">
                                         <BsGrid className="w-6 h-6" />
                                         <p className="font-medium text-base">
@@ -187,7 +228,10 @@ const DashboardHeader = () => {
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/my-plans"}>
+                                <NavLink
+                                    onClick={handleCloseSideNav}
+                                    to={"/user/my-plans"}
+                                >
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <LuWallet className="w-6 h-6" />
                                         <p className="font-medium text-base">
@@ -195,7 +239,10 @@ const DashboardHeader = () => {
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/invest"}>
+                                <NavLink
+                                    onClick={handleCloseSideNav}
+                                    to={"/user/invest"}
+                                >
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <LuWallet className="w-6 h-6" />
                                         <p className="font-medium text-base">
@@ -203,7 +250,10 @@ const DashboardHeader = () => {
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/transactions"}>
+                                <NavLink
+                                    onClick={handleCloseSideNav}
+                                    to={"/user/transactions"}
+                                >
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <LuRepeat className="w-6 h-6" />
                                         <p className="font-medium text-base">
@@ -211,7 +261,10 @@ const DashboardHeader = () => {
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/withdraw"}>
+                                <NavLink
+                                    onClick={handleCloseSideNav}
+                                    to={"/user/withdraw"}
+                                >
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <FaRegCreditCard className="w-6 h-6" />
                                         <p className="font-medium text-base">
@@ -219,7 +272,10 @@ const DashboardHeader = () => {
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/my-account/profile"}>
+                                <NavLink
+                                    onClick={handleCloseSideNav}
+                                    to={"/user/my-account/profile"}
+                                >
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <MdAccountBox className="w-6 h-6" />
                                         <p className="font-medium text-base">
@@ -230,7 +286,10 @@ const DashboardHeader = () => {
                             </div>
                         </div>
                         <div className="w-full h-max">
-                            <NavLink to={"/contact"}>
+                            <NavLink
+                                onClick={handleCloseSideNav}
+                                to={"/contact"}
+                            >
                                 <div className="w-full h-10 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                     <GrSupport className="w-4 h-4" />
                                     <p className="font-medium text-sm">
