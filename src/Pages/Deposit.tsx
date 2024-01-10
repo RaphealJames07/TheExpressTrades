@@ -29,7 +29,7 @@ const Deposit = () => {
     const handleProceed = () => {
         if (!/^[0-9]+$/.test(amount)) {
             alert("Amount must be a number only");
-        } else if (!amount && !btc) {
+        } else if (!amount && !btc||!eth) {
             alert("Please select a mode and enter the amount to deposit!");
         } else {
             setDirect(true);
