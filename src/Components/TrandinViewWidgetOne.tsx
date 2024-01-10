@@ -47,7 +47,7 @@
 
 // export default memo(TradingViewWidgetOne);
 
-import React, { useEffect, useRef, memo, RefObject } from 'react';
+import { useEffect, useRef, memo, RefObject } from 'react';
 
 function TradingViewWidgetOne() {
   const container: RefObject<HTMLDivElement> = useRef(null);
