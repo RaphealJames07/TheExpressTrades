@@ -15,7 +15,7 @@ import {NavLink} from "react-router-dom";
 
 const User = () => {
 
-
+// console.log("object");
     return (
         <>
             <div className="w-full h-max flex">
