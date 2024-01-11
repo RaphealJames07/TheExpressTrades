@@ -14,12 +14,12 @@ import {MdAccountBox} from "react-icons/md";
 import {GrSupport} from "react-icons/gr";
 import {NavLink} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
-import { useSelector } from "react-redux";
-import { logout } from "../Redux/Features";
-import { useDispatch } from "react-redux";
+import {useSelector} from "react-redux";
+import {logout} from "../Redux/Features";
+import {useDispatch} from "react-redux";
 
 const DashboardHeader = () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const [showProfile, setShowProfile] = useState<boolean>(false);
     const [sideNav, setSideNav] = useState<boolean>(false);
     const [notification, setNotification] = useState<boolean>(false);
@@ -39,12 +39,13 @@ const DashboardHeader = () => {
     };
     const nav = useNavigate();
     const handleLogout = () => {
-        dispatch(logout())
+        dispatch(logout());
         nav("/");
     };
 
-    const user = useSelector((state: any) => state.expressTrade.expressTrade.tradeUser);
-
+    const user = useSelector(
+        (state: any) => state.expressTrade.expressTrade.tradeUser
+    );
 
     return (
         <div className="w-[76%] phone:w-full h-16 fixed top-0 flex items-center z-50 justify-between px-10 phone:px-4 shadow-sm bg-white">
@@ -60,12 +61,13 @@ const DashboardHeader = () => {
             </div>
             <div className="w-max h-max flex items-center gap-8 phone:gap-4">
                 <div
-                    className="w-max h-max flex items-center gap-2 cursor-pointer hover:bg-gray-100 rounded-full pr-2 transition-all duration-500 text-gray-700 relative"
+                    className="w-max h-max flex items-center gap-2 cursor-pointer hover:bg-[#7c3131] rounded-full pr-2 transition-all duration-500 text-gray-700 relative"
                     onClick={handleShowProfile}
                 >
                     <CiUser className="w-8 h-8 rounded-full bg-[#e8757d] text-white p-2" />
                     <p className="flex items-center text-sm font-semibold gap-1 phone:hidden">
-                        {user?.fullName}
+                        {user?.fullName.toLowerCase().charAt(0).toUpperCase() +
+                            user.fullName.toLowerCase().slice(1)}
                         <span>
                             <FaCaretDown />
                         </span>
@@ -76,7 +78,13 @@ const DashboardHeader = () => {
                                 <div className="w-10 h-10 rounded-full bg-[#e8757d]"></div>
                                 <div className="w-max h-max flex justify-center flex-col">
                                     <p className="text-sm font-bold text-[rgb(71,96,127)]">
-                                        {user?.fullName}
+                                        {user?.fullName
+                                            .toLowerCase()
+                                            .charAt(0)
+                                            .toUpperCase() +
+                                            user.fullName
+                                                .toLowerCase()
+                                                .slice(1)}
                                     </p>
                                     <p className="text-xs text-[rgb(128,148,174)] font-semibold">
                                         {user?.email}
@@ -227,8 +235,13 @@ const DashboardHeader = () => {
                                 <NavLink
                                     onClick={handleCloseSideNav}
                                     to={"/user/dashboard"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
                                 >
-                                    <div className="w-full h-11 flex items-center text-white bg-[#7c3131] transition-all duration-400 gap-4 px-6 rounded-full cursor-pointer">
+                                    <div className="w-full h-11 flex items-center text-white  transition-all duration-400 gap-4 px-6 rounded-full cursor-pointer">
                                         <BsGrid className="w-6 h-6" />
                                         <p className="font-medium text-base">
                                             Dashboard
@@ -238,8 +251,13 @@ const DashboardHeader = () => {
                                 <NavLink
                                     onClick={handleCloseSideNav}
                                     to={"/user/my-plans"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
                                 >
-                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400  gap-4 px-6 rounded-full cursor-pointer">
                                         <LuWallet className="w-6 h-6" />
                                         <p className="font-medium text-base">
                                             My Plans
@@ -249,8 +267,13 @@ const DashboardHeader = () => {
                                 <NavLink
                                     onClick={handleCloseSideNav}
                                     to={"/user/invest"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
                                 >
-                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400  gap-4 px-6 rounded-full cursor-pointer">
                                         <LuWallet className="w-6 h-6" />
                                         <p className="font-medium text-base">
                                             Invest
@@ -260,8 +283,13 @@ const DashboardHeader = () => {
                                 <NavLink
                                     onClick={handleCloseSideNav}
                                     to={"/user/transactions"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
                                 >
-                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400  gap-4 px-6 rounded-full cursor-pointer">
                                         <LuRepeat className="w-6 h-6" />
                                         <p className="font-medium text-base">
                                             Transactions
@@ -271,8 +299,13 @@ const DashboardHeader = () => {
                                 <NavLink
                                     onClick={handleCloseSideNav}
                                     to={"/user/withdraw"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
                                 >
-                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400  gap-4 px-6 rounded-full cursor-pointer">
                                         <FaRegCreditCard className="w-6 h-6" />
                                         <p className="font-medium text-base">
                                             Withdraw
@@ -282,8 +315,13 @@ const DashboardHeader = () => {
                                 <NavLink
                                     onClick={handleCloseSideNav}
                                     to={"/user/my-account/profile"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
                                 >
-                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400  gap-4 px-6 rounded-full cursor-pointer">
                                         <MdAccountBox className="w-6 h-6" />
                                         <p className="font-medium text-base">
                                             Account
@@ -296,8 +334,13 @@ const DashboardHeader = () => {
                             <NavLink
                                 onClick={handleCloseSideNav}
                                 to={"/contact"}
+                                className={({isActive}) =>
+                                    !isActive
+                                        ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded  hover:text-[#0e4152] text-[#777]"
+                                        : "transition-all bg-[#7c3131] text-white"
+                                }
                             >
-                                <div className="w-full h-10 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
+                                <div className="w-full h-10 flex items-center text-white transition-all duration-400  gap-4 px-6 rounded-full cursor-pointer">
                                     <GrSupport className="w-4 h-4" />
                                     <p className="font-medium text-sm">
                                         Support

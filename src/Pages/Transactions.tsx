@@ -2,7 +2,7 @@ import axios from "axios";
 import {useEffect} from "react";
 
 const Transactions = () => {
-    const url = "https://express-trades.onrender.com/api/v1/user/all-payments"
+    const url = "https://express-trades.vercel.app/api/v1/user/all-payments"
     const getAllPayments = () => {
         axios
             .get(url)

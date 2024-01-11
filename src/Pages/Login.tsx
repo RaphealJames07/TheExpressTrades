@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { user } from "../Redux/Features";
+import { token, user } from "../Redux/Features";
 
 const Login = () => {
     const LoginContent = () => {
@@ -39,12 +39,13 @@ const Login = () => {
                 const toastLoadingId = toast.loading("Please wait...");
                 setLoading(true);
                 const url =
-                    "https://express-trades.onrender.com/api/v1/user/sign-in";
+                    "https://express-trades.vercel.app/api/v1/user/sign-in";
                 const data = {email: email, password: password};
                 axios
                     .post(url, data)
                     .then((response) => {
                         dispatch(user(response?.data?.user))
+                        dispatch(token(response?.data?.token))
                         setLoading(false);
                         toast.dismiss(toastLoadingId);
                         console.log(response);

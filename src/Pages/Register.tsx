@@ -48,7 +48,7 @@ const Register = () => {
                 console.log("Creating account...");
                 const toastLoadingId = toast.loading("Please wait...");
                 const url =
-                    "https://express-trades.onrender.com/api/v1/user/sign-up";
+                    "https://express-trades.vercel.app/api/v1/user/sign-up";
                 const data = {
                     fullName: fullName,
                     email: email,

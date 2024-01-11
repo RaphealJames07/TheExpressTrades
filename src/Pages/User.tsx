@@ -14,7 +14,9 @@ import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 
 const User = () => {
-    const user = useSelector((state: any) => state.expressTrade.expressTrade.tradeUser);
+    const user = useSelector(
+        (state: any) => state.expressTrade.expressTrade.tradeUser
+    );
 
     console.log(user);
 
@@ -69,15 +71,29 @@ const User = () => {
                                 MENU
                             </p>
                             <div className="w-full h-max flex flex-col gap-2">
-                                <NavLink to={"/user/dashboard"}>
-                                    <div className="w-full h-11 flex items-center text-white bg-[#7c3131] transition-all duration-400 gap-4 px-6 rounded-full cursor-pointer">
+                                <NavLink
+                                    to={"/user/dashboard"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
+                                >
+                                    <div className="w-full h-11 flex items-center text-white transition-all duration-400 gap-4 px-6 rounded-full cursor-pointer">
                                         <BsGrid className="w-6 h-6" />
                                         <p className="font-medium text-base">
                                             Dashboard
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/my-plans"}>
+                                <NavLink
+                                    to={"/user/my-plans"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
+                                >
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <LuWallet className="w-6 h-6" />
                                         <p className="font-medium text-base">
@@ -85,7 +101,14 @@ const User = () => {
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/invest"}>
+                                <NavLink
+                                    to={"/user/invest"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
+                                >
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <LuWallet className="w-6 h-6" />
                                         <p className="font-medium text-base">
@@ -93,7 +116,14 @@ const User = () => {
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/transactions"}>
+                                <NavLink
+                                    to={"/user/transactions"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
+                                >
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <LuRepeat className="w-6 h-6" />
                                         <p className="font-medium text-base">
@@ -101,7 +131,14 @@ const User = () => {
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/withdraw"}>
+                                <NavLink
+                                    to={"/user/withdraw"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
+                                >
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <FaRegCreditCard className="w-6 h-6" />
                                         <p className="font-medium text-base">
@@ -109,7 +146,14 @@ const User = () => {
                                         </p>
                                     </div>
                                 </NavLink>
-                                <NavLink to={"/user/my-account/profile"}>
+                                <NavLink
+                                    to={"/user/my-account/profile"}
+                                    className={({isActive}) =>
+                                        !isActive
+                                            ? "transition-all hover:text-[0.90rem] hover:bg-[#7c3131] rounded-full  hover:text-[#0e4152] text-[#777]"
+                                            : "transition-all bg-[#7c3131] text-white rounded-full"
+                                    }
+                                >
                                     <div className="w-full h-11 flex items-center text-white transition-all duration-400 hover:bg-[#7c3131] gap-4 px-6 rounded-full cursor-pointer">
                                         <MdAccountBox className="w-6 h-6" />
                                         <p className="font-medium text-base">

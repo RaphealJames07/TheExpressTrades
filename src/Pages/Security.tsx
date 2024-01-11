@@ -1,11 +1,54 @@
 import {Modal} from "antd";
+import axios from "axios";
 import {useState} from "react";
+import toast from "react-hot-toast";
+import {useSelector} from "react-redux";
 
 const Security = () => {
     const [modal, setModal] = useState<boolean>(false);
+    const [oldPassword, setOldPassword] = useState<string>("");
+    const [newPassword, setNewPassword] = useState<string>("");
+    const [confirmNewPassword, setConfirmNewPassword] = useState<string>("");
+
     const handleToggleModal = () => {
         setModal(!modal);
     };
+    const userToken = useSelector(
+        (state: any) => state.expressTrade.expressTrade.userToken
+    );
+
+    const handleChangePassword = (e: any) => {
+        e.preventDefault();
+        if (newPassword !== confirmNewPassword) {
+            toast.error("Password does not match");
+        } else if (!oldPassword && !newPassword && !confirmNewPassword) {
+            toast.error("All fields are required");
+        } else {
+            const url =
+                "https://express-trades.vercel.app/api/v1/user/change-password";
+            const data = {
+                existingPassword: oldPassword,
+                newPassword: newPassword,
+                confirmPassword: confirmNewPassword,
+            };
+            const token = userToken;
+            const headers = {
+                Authorization: `Bearer ${token}`,
+            };
+
+            axios
+                .post(url, data, {headers})
+                .then((response) => {
+                    console.log(response);
+                    toast.success(response?.data?.message);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    toast.error(error?.response?.data?.message);
+                });
+        }
+    };
+
     return (
         <>
             <div className="w-full h-max pt-5 flex flex-col gap-2">
@@ -47,11 +90,13 @@ const Security = () => {
                     </p>
                     <div className="w-full h-max flex flex-col gap-2">
                         <p className="text-[rgb(52,67,87)] font-medium">
-                            New Password
+                            Old Password
                         </p>
                         <input
                             type="password"
-                            className="w-full h-10 rounded border border-gray-300 outline-1 outline-red-100"
+                            className="w-full h-10 rounded border border-gray-300 outline-1 outline-red-100 pl-4"
+                            value={oldPassword}
+                            onChange={(e) => setOldPassword(e.target.value)}
                         />
                     </div>
                     <div className="w-full h-max flex flex-col gap-2">
@@ -60,19 +105,28 @@ const Security = () => {
                         </p>
                         <input
                             type="password"
-                            className="w-full h-10 rounded border border-gray-300 outline-1 outline-red-100"
+                            className="w-full h-10 rounded border border-gray-300 outline-1 outline-red-100 pl-4"
+                            value={newPassword}
+                            onChange={(e) => setNewPassword(e.target.value)}
                         />
                     </div>
                     <div className="w-full h-max flex flex-col gap-2">
                         <p className="text-[rgb(52,67,87)] font-medium">
-                            New Password
+                            Confirm New Password
                         </p>
                         <input
                             type="password"
-                            className="w-full h-10 rounded border border-gray-300 outline-1 outline-red-100"
+                            className="w-full h-10 rounded border border-gray-300 outline-1 outline-red-100 pl-4"
+                            value={confirmNewPassword}
+                            onChange={(e) =>
+                                setConfirmNewPassword(e.target.value)
+                            }
                         />
                     </div>
-                    <button className="w-max h-max px-5 py-2 bg-[#e14954] text-white rounded text-sm font-semibold">
+                    <button
+                        className="w-max h-max px-5 py-2 bg-[#e14954] text-white rounded text-sm font-semibold"
+                        onClick={handleChangePassword}
+                    >
                         UPDATE PASSWORD
                     </button>
                 </div>
