@@ -11,7 +11,9 @@ const Deposit = () => {
     const [isBtcPay, setIsBtcPay] = useState<boolean>(false);
     const [isEthPay, setIsEthPay] = useState<boolean>(false);
     const [direct, setDirect] = useState<boolean>(false);
+    const [isPayed, setIsPayed] = useState<boolean>(false);
     const [amount, setAmount] = useState<string>("");
+    const [fileInput, setFileInput] = useState<HTMLInputElement | null>(null);
 
     const handleSelectBtc = () => {
         setBtc(true);
@@ -29,7 +31,9 @@ const Deposit = () => {
     const handleProceed = () => {
         if (!/^[0-9]+$/.test(amount)) {
             alert("Amount must be a number only");
-        } else if (!amount && !btc||!eth) {
+        } else if (!amount && !btc) {
+            alert("Please select a mode and enter the amount to deposit!");
+        } else if (!amount && !eth) {
             alert("Please select a mode and enter the amount to deposit!");
         } else {
             setDirect(true);
@@ -42,6 +46,24 @@ const Deposit = () => {
         setEth(false);
         setIsEthPay(false);
         setIsBtcPay(false);
+        if (fileInput) {
+            // Reset the file input value
+            fileInput.value = "";
+        }
+    };
+
+    const [selectedFileName, setSelectedFileName] =
+        useState<string>("Click to select");
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        // Handle file change event
+        const fileName = e.target.files?.[0]?.name || "Click to select";
+        setSelectedFileName(fileName);
+        alert(`Selected file: ${fileName}`);
+    };
+
+    const handleIsPayed = () => {
+        setIsPayed(true);
     };
 
     return (
@@ -64,8 +86,8 @@ const Deposit = () => {
                                     Transaction details
                                 </p>
                                 <p className="text-[rgb(82,100,132)] font-medium text-center text-base">
-                                    You are about to get 0.004445 BTC for {amount}.00
-                                    USD*
+                                    You are about to get 0.004445 BTC for{" "}
+                                    {amount}.00 USD*
                                 </p>
                                 <p className="text-[rgb(128,148,174)] text-center text-xs">
                                     Exchange rate: 1 BTC = 44,998.00 USD
@@ -81,8 +103,50 @@ const Deposit = () => {
                                 <div className="w-48 h-48 flex items-center justify-center">
                                     <img src={btcCode} alt="" className="" />
                                 </div>
-                                <button className="w-max h-max rounded text-white text-base font-semibold py-2 px-6 bg-[#e14954]">
-                                    I've sent the coin
+                                {isPayed ? (
+                                    <div className="w-full h-max flex flex-col mt-10 gap-10">
+                                        <div className="w-full h-24 border border-[rgb(205,159,12)] bg-[#fef7e2] rounded flex flex-col items-center justify-center gap-1">
+                                            <p className="text-sm text-[rgb(205,159,12)]">
+                                                {" "}
+                                                Attach your proof of payment
+                                                below.
+                                            </p>
+                                            <p className="text-sm text-[rgb(205,159,12)] font-medium">
+                                                {" "}
+                                                Accepted format: .JPG, .PNG,
+                                                .GIF, .PDF
+                                            </p>
+                                        </div>
+                                        <div className="w-full h-10 border border-gray-300 rounded flex">
+                                            <input
+                                                type="file"
+                                                accept="image/jpeg, image/png, image/gif, application/pdf"
+                                                className="hidden"
+                                                onChange={handleFileChange}
+                                                ref={(input) =>
+                                                    setFileInput(input)
+                                                }
+                                                id="fileInput"
+                                            />
+                                            <label
+                                                className="cursor-pointer w-full h-full border-none outline-none flex justify-center items-center bg-gray-200 rounded"
+                                                htmlFor="fileInput"
+                                            >
+                                                <div className="w-max px-2 flex items-center justify-center h-full">
+                                                    {selectedFileName}
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                ) : null}
+
+                                <button
+                                    className="w-max h-max rounded text-white text-base font-semibold py-2 px-6 bg-[#e14954]"
+                                    onClick={handleIsPayed}
+                                >
+                                    {isPayed
+                                        ? "Submit"
+                                        : "I have sent the coin"}
                                 </button>
                             </div>
                         </>
@@ -102,8 +166,8 @@ const Deposit = () => {
                                     Transaction details
                                 </p>
                                 <p className="text-[rgb(82,100,132)] font-medium text-center text-base">
-                                    You are about to get 0.004445 ETH for {amount}.00
-                                    USD*
+                                    You are about to get 0.004445 ETH for{" "}
+                                    {amount}.00 USD*
                                 </p>
                                 <p className="text-[rgb(128,148,174)] text-center text-xs">
                                     Exchange rate: 1 ETH = 44,998.00 USD
