@@ -1,4 +1,23 @@
+import axios from "axios";
+import {useEffect} from "react";
+
 const Transactions = () => {
+    const url = "https://express-trades.onrender.com/api/v1/user/all-payments"
+    const getAllPayments = () => {
+        axios
+            .get(url)
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log("Error: ", error);
+            });
+    };
+
+    useEffect(() => {
+        getAllPayments();
+    }, []);
+
     return (
         <>
             <div className="w-full h-max">

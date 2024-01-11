@@ -11,11 +11,13 @@ import DashboardFooter from "../Components/DashboardFooter";
 // import Dashboard from "./Dashboard";
 import {Outlet} from "react-router";
 import {NavLink} from "react-router-dom";
-
+import {useSelector} from "react-redux";
 
 const User = () => {
+    const user = useSelector((state: any) => state.expressTrade.expressTrade.tradeUser);
 
-// console.log("object");
+    console.log(user);
+
     return (
         <>
             <div className="w-full h-max flex">
@@ -38,7 +40,7 @@ const User = () => {
                                     </span>
                                 </p>
                                 <p className="text-white font-medium">
-                                    10.00 USD
+                                    {user?.balance}.00 USD
                                 </p>
                             </div>
                             <NavLink to={"/user/dashboard"}>
@@ -137,7 +139,6 @@ const User = () => {
                     <DashboardFooter />
                 </div>
             </div>
-            
         </>
     );
 };

@@ -4,9 +4,12 @@ import {useState} from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { user } from "../Redux/Features";
 
 const Login = () => {
     const LoginContent = () => {
+        const dispatch = useDispatch()
         const [email, setEmail] = useState("");
         const [password, setPassword] = useState("");
         const [loading, setLoading] = useState(false);
@@ -41,6 +44,7 @@ const Login = () => {
                 axios
                     .post(url, data)
                     .then((response) => {
+                        dispatch(user(response?.data?.user))
                         setLoading(false);
                         toast.dismiss(toastLoadingId);
                         console.log(response);

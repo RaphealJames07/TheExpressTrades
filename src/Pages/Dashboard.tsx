@@ -4,15 +4,17 @@ import {NavLink} from "react-router-dom";
 import TrandinViewWidgetOne from "../Components/TrandinViewWidgetOne";
 import TradingViewWidgettwo from "../Components/TradingViewWidgettwo";
 import TradingViewWidgetThree from "../Components/TradingViewWidgetThree";
+import { useSelector } from "react-redux";
 
 const Dashboard = () => {
     // console.log("object");
+    const user = useSelector((state: any) => state.expressTrade.expressTrade.tradeUser);
     return (
         <div className="w-full h-max ">
             <div className="w-full h-max flex flex-col px-10 phone:px-4 py-8 gap-3">
                 <p className="text-base text-[rgb(128,148,174)]">Welcome,</p>
                 <div className="w-full flex phone:flex-col phone:gap-4 justify-between">
-                    <p className="text-[rgb(54,74,99)] text-4xl">James Jnr</p>
+                    <p className="text-[rgb(54,74,99)] text-4xl">{user.fullName}</p>
                     <div className="w-max h-max flex items-center gap-4">
                         <NavLink to={"/user/deposit"}>
                             <button className="w-max h-max flex items-center gap-2 bg-[#e14954] rounded text-white px-6 py-2 text-sm font-semibold">
@@ -47,7 +49,7 @@ const Dashboard = () => {
                             0.000228 BTC
                         </p>
                         <p className="text-sm font-semibold text-[rgb(30,224,172)] flex items-end">
-                            = $10.00
+                            = ${user.balance}.00
                         </p>
                     </div>
                 </div>

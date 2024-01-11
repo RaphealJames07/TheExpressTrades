@@ -1,6 +1,8 @@
 import {FaAngleRight} from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
+    const user = useSelector((state: any) => state.expressTrade.expressTrade.tradeUser);
     return (
         <>
             <div className="w-full h-max pt-5 flex flex-col gap-2">
@@ -15,7 +17,7 @@ const Profile = () => {
                         <div className="w-1/2 h-full flex items-center justify-between phone:flex-col phone:items-start phone:justify-center phone:gap-2">
                             <p className="text-[rgb(82,100,132)] text-sm">Full Name</p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                                James Jnr
+                                {user?.fullName}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
@@ -24,9 +26,9 @@ const Profile = () => {
                     </div>
                     <div className="w-full h-20 border-b border-b-gray-300 flex justify-between items-center cursor-pointer px-4">
                         <div className="w-1/2 h-full flex items-center justify-between phone:flex-col phone:items-start phone:justify-center phone:gap-2">
-                            <p className="text-[rgb(82,100,132)] text-sm">Full Name</p>
+                            <p className="text-[rgb(82,100,132)] text-sm">Email</p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                                James Jnr
+                                {user?.email}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
@@ -35,9 +37,9 @@ const Profile = () => {
                     </div>
                     <div className="w-full h-20 border-b border-b-gray-300 flex justify-between items-center cursor-pointer px-4">
                         <div className="w-1/2 h-full flex items-center justify-between phone:flex-col phone:items-start phone:justify-center phone:gap-2">
-                            <p className="text-[rgb(82,100,132)] text-sm">Full Name</p>
+                            <p className="text-[rgb(82,100,132)] text-sm">Phone Number</p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                                James Jnr
+                               {null}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
@@ -46,9 +48,9 @@ const Profile = () => {
                     </div>
                     <div className="w-full h-20 border-b border-b-gray-300 flex justify-between items-center cursor-pointer px-4">
                         <div className="w-1/2 h-full flex items-center justify-between phone:flex-col phone:items-start phone:justify-center phone:gap-2">
-                            <p className="text-[rgb(82,100,132)] text-sm">Full Name</p>
+                            <p className="text-[rgb(82,100,132)] text-sm">Date of birth</p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                                James Jnr
+                                {null}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
@@ -57,9 +59,9 @@ const Profile = () => {
                     </div>
                     <div className="w-full h-20 flex justify-between items-center cursor-pointer px-4">
                         <div className="w-1/2 h-full flex items-center justify-between phone:flex-col phone:items-start phone:justify-center phone:gap-2">
-                            <p className="text-[rgb(82,100,132)] text-sm">Full Name</p>
+                            <p className="text-[rgb(82,100,132)] text-sm">Address</p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                                James Jnr
+                                {null}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">

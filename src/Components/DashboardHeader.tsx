@@ -14,8 +14,12 @@ import {MdAccountBox} from "react-icons/md";
 import {GrSupport} from "react-icons/gr";
 import {NavLink} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
+import { useSelector } from "react-redux";
+import { logout } from "../Redux/Features";
+import { useDispatch } from "react-redux";
 
 const DashboardHeader = () => {
+    const dispatch = useDispatch()
     const [showProfile, setShowProfile] = useState<boolean>(false);
     const [sideNav, setSideNav] = useState<boolean>(false);
     const [notification, setNotification] = useState<boolean>(false);
@@ -35,9 +39,12 @@ const DashboardHeader = () => {
     };
     const nav = useNavigate();
     const handleLogout = () => {
-        // localStorage.removeItem("token");
+        dispatch(logout())
         nav("/");
     };
+
+    const user = useSelector((state: any) => state.expressTrade.expressTrade.tradeUser);
+
 
     return (
         <div className="w-[76%] phone:w-full h-16 fixed top-0 flex items-center z-50 justify-between px-10 phone:px-4 shadow-sm bg-white">
@@ -58,7 +65,7 @@ const DashboardHeader = () => {
                 >
                     <CiUser className="w-8 h-8 rounded-full bg-[#e8757d] text-white p-2" />
                     <p className="flex items-center text-sm font-semibold gap-1 phone:hidden">
-                        James Jnr
+                        {user?.fullName}
                         <span>
                             <FaCaretDown />
                         </span>
@@ -69,10 +76,10 @@ const DashboardHeader = () => {
                                 <div className="w-10 h-10 rounded-full bg-[#e8757d]"></div>
                                 <div className="w-max h-max flex justify-center flex-col">
                                     <p className="text-sm font-bold text-[rgb(71,96,127)]">
-                                        James Jnr
+                                        {user?.fullName}
                                     </p>
                                     <p className="text-xs text-[rgb(128,148,174)] font-semibold">
-                                        raphealjunior07@gmail.com
+                                        {user?.email}
                                     </p>
                                 </div>
                             </div>
@@ -89,7 +96,7 @@ const DashboardHeader = () => {
                                             </span>
                                         </p>
                                         <p className="text-white font-medium">
-                                            10.00 USD
+                                            {user?.balance}.00 USD
                                         </p>
                                     </div>
                                     <div className="w-max h-max items-center justify-center">
@@ -179,7 +186,7 @@ const DashboardHeader = () => {
                                     </span>
                                 </p>
                                 <p className="text-white font-medium">
-                                    10.00 USD
+                                    {user?.balance}.00 USD
                                 </p>
                             </div>
                             <NavLink
