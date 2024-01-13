@@ -12,13 +12,43 @@ import DashboardFooter from "../Components/DashboardFooter";
 import {Outlet} from "react-router";
 import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
+import axios from "axios";
+import {useDispatch} from "react-redux";
+import {userTransactions} from "../Redux/Features";
+import { useEffect } from "react";
 
 const User = () => {
+    const dispatch = useDispatch();
     const user = useSelector(
         (state: any) => state.expressTrade.expressTrade.tradeUser
     );
 
-    console.log(user);
+    const userToken = useSelector(
+        (state: any) => state.expressTrade.expressTrade.userToken
+    );
+
+    const getOne = () => {
+        console.log("Getting transaction...");
+        const url = `https://express-trades.vercel.app/api/v1/user/all-payments`;
+        const token = userToken;
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+
+        axios
+            .get(url, {headers})
+            .then((response) => {
+                console.log(response);
+                dispatch(userTransactions(response?.data?.data));
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    useEffect(() => {
+        getOne();
+    }, []);
 
     return (
         <>

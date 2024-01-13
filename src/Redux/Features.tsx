@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     tradeUser: {},
-    userToken: ""
+    userToken: "",
+    getOneUser: {},
+    transactions: []
 };
 
 const features = createSlice({
@@ -12,6 +14,14 @@ const features = createSlice({
         user: (state, {payload}) => {
             state.tradeUser = payload
             console.log("User Data:", payload);
+        },
+        oneUser: (state, {payload}) => {
+            state.getOneUser = payload
+            console.log("Get One User Data:", payload);
+        },
+        userTransactions: (state, {payload}) => {
+            state.transactions = payload
+            console.log("User Data Transactions:", payload);
         },
         token: (state, {payload}) => {
             state.userToken = payload
@@ -28,6 +38,8 @@ export const {
   user,
   logout,
   token,
+  oneUser,
+  userTransactions,
 } = features.actions;
 
 export default features.reducer;

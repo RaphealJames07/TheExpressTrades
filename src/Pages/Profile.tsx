@@ -1,14 +1,20 @@
 import {Modal} from "antd";
 import axios from "axios";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import {FaAngleRight} from "react-icons/fa";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
+import { oneUser } from "../Redux/Features";
 
 const Profile = () => {
     const user = useSelector(
         (state: any) => state.expressTrade.expressTrade.tradeUser
     );
+    const oneUserData = useSelector(
+        (state: any) => state.expressTrade.expressTrade.getOneUser
+    );
+    console.log(user);
+    const dispatch = useDispatch()
 
     const [edit, setEdit] = useState<boolean>(false);
     const [change, setChange] = useState<boolean>(false);
@@ -24,7 +30,9 @@ const Profile = () => {
     const toggleEdit = () => {
         setEdit(!edit);
     };
-    const userToken = useSelector((state: any) => state.expressTrade.expressTrade.userToken);
+    const userToken = useSelector(
+        (state: any) => state.expressTrade.expressTrade.userToken
+    );
 
     const handleUpdate = (e: any) => {
         e.preventDefault();
@@ -40,7 +48,7 @@ const Profile = () => {
         if (fullName !== "") data.fullName = fullName;
         if (email !== "") data.email = email;
         if (phoneNo !== "") data.phoneNumber = phoneNo;
-        if (dob !== "") data.dob = dob;
+        if (dob !== "") data.dateOfBirth = dob;
         if (address !== "") data.address = address;
         if (postal !== "") data.postalCode = postal;
         if (country !== "") data.country = country;
@@ -52,14 +60,34 @@ const Profile = () => {
         axios
             .post(url, data, {headers})
             .then((response) => {
-                toast.success(response?.data?.message)
+                toast.success(response?.data?.message);
                 console.log(response);
-                setEdit(false)
+                setEdit(false);
+                getOne()
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.success(error?.response?.data?.error?.message);
+            });
+    };
+
+    const getOne = () => {
+        const url = `https://express-trades.vercel.app/api/v1/user/one-user/${user._id}`;
+
+        axios
+            .get(url)
+            .then((response) => {
+                console.log(response);
+                dispatch(oneUser(response.data.data))
             })
             .catch((error) => {
                 console.log(error);
             });
     };
+
+    useEffect(() => {
+        getOne();
+    }, []);
 
     return (
         <>
@@ -80,7 +108,11 @@ const Profile = () => {
                                 Full Name
                             </p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                            {user?.fullName.toLowerCase().charAt(0).toUpperCase() + user.fullName.toLowerCase().slice(1)}
+                                {oneUserData?.fullName
+                                    .toLowerCase()
+                                    .charAt(0)
+                                    .toUpperCase() +
+                                    oneUserData.fullName.toLowerCase().slice(1)}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
@@ -96,7 +128,7 @@ const Profile = () => {
                                 Email
                             </p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                                {user?.email}
+                                {oneUserData?.email}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
@@ -112,7 +144,7 @@ const Profile = () => {
                                 Phone Number
                             </p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                                {null}
+                                {oneUserData?.phoneNumber}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
@@ -128,7 +160,7 @@ const Profile = () => {
                                 Date of birth
                             </p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                                {null}
+                                {oneUserData.dateOfBirth}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">
@@ -144,7 +176,7 @@ const Profile = () => {
                                 Address
                             </p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                                {null}
+                                {`${oneUserData?.address} ${oneUserData?.country} ${oneUserData?.postalCode}`}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">

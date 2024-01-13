@@ -4,6 +4,7 @@ import btcCode from "../assets/btccode.jpg";
 import ethCode from "../assets/ethcode.jpg";
 import {useState} from "react";
 import {IoMdArrowRoundBack} from "react-icons/io";
+import toast from "react-hot-toast";
 
 const Deposit = () => {
     const [btc, setBtc] = useState<boolean>(false);
@@ -59,11 +60,19 @@ const Deposit = () => {
         // Handle file change event
         const fileName = e.target.files?.[0]?.name || "Click to select";
         setSelectedFileName(fileName);
-        alert(`Selected file: ${fileName}`);
+        // alert(`Selected file: ${fileName}`);
     };
 
     const handleIsPayed = () => {
         setIsPayed(true);
+        const toastLoadingId = toast.loading("Please wait...");
+        setTimeout(() => {
+            toast.dismiss(toastLoadingId);
+            toast.success(
+                "Your deposit is pending, when the admin confirms payment your account will be credited",
+                {duration: 5000}
+            );
+        }, 3000);
     };
 
     return (

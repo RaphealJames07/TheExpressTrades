@@ -18,17 +18,39 @@ const MyAccount = () => {
                     </p>
                     <div className="w-full h-max mt-8">
                         <div className="w-full h-10 border-b border-b-gray-300 flex gap-1 text-sm font-semibold ">
-                            <NavLink to={"/user/my-account/profile"}>
-                                <div className="w-24 h-full border-b-2 cursor-pointer border-b-[#e14954] text-[#e14954]">
+                            <NavLink
+                                to={"/user/my-account/profile"}
+                                // className={``}
+                                className={({isActive}) =>
+                                    !isActive
+                                        ? "transition-all "
+                                        : "transition-all border-b-[#e14954] border-b-2 text-[#e14954] "
+                                }
+                            >
+                                <div className="w-24 h-full  cursor-pointer ">
                                     Personal
                                 </div>
                             </NavLink>
-                            <NavLink to={"/user/my-account/security"}>
+                            <NavLink
+                                to={"/user/my-account/security"}
+                                className={({isActive}) =>
+                                    !isActive
+                                        ? "transition-all "
+                                        : "transition-all border-b-[#e14954] border-b-2 text-[#e14954] "
+                                }
+                            >
                                 <div className="w-24 h-full border-b-2 cursor-pointer ">
                                     Security
                                 </div>
                             </NavLink>
-                            <NavLink to={"/user/my-account/payouts"}>
+                            <NavLink
+                                to={"/user/my-account/payouts"}
+                                className={({isActive}) =>
+                                    !isActive
+                                        ? "transition-all "
+                                        : "transition-all border-b-[#e14954] border-b-2 text-[#e14954] "
+                                }
+                            >
                                 <div className="w-24 h-full border-b-2 cursor-pointer ">
                                     Payouts
                                 </div>

@@ -55,12 +55,12 @@ const Invest = () => {
                                             <p>$3,000.00</p>
                                         </div>
                                         <div className="w-full h-max flex justify-between">
-                                            <p>Min Deposit</p>
+                                            <p>Max Deposit</p>
                                             <span>-</span>
                                             <p>$3,000.00</p>
                                         </div>
                                         <div className="w-full h-max flex justify-between">
-                                            <p>Min Deposit</p>
+                                            <p>Total Return</p>
                                             <span>-</span>
                                             <p>$3,000.00</p>
                                         </div>
@@ -79,22 +79,22 @@ const Invest = () => {
                             <div className="w-[21rem] h-[30rem] border border-gray-100 bg-white rounded shadow">
                                 <div className="w-full h-[40%] flex flex-col items-center justify-between border-b border-b-gray-300 px-12 py-7">
                                     <p className="text-2xl text-[rgb(54,74,99)] font-semibold">
-                                        SILVER PLAN
+                                        SUPER PLAN
                                     </p>
                                     <p className="text-xs text-[rgb(128,148,174)] font-semibold">
                                         Enjoy entry level of invest earn money.
                                     </p>
                                     <div className="w-full h-max flex justify-between">
                                         <p className="text-3xl text-[rgb(54,74,99)] font-semibold flex flex-col gap-1 items-center">
-                                            10%{" "}
+                                            15%{" "}
                                             <span className="text-xs text-[rgb(128,148,174)] font-medium">
                                                 Daily Interest
                                             </span>
                                         </p>
                                         <p className="text-3xl text-[rgb(54,74,99)] font-semibold flex flex-col gap-1 items-center">
-                                            7
+                                            2
                                             <span className="text-xs text-[rgb(128,148,174)] font-medium">
-                                                Term Days
+                                                Term Months
                                             </span>
                                         </p>
                                     </div>
@@ -104,24 +104,24 @@ const Invest = () => {
                                         <div className="w-full h-max flex justify-between">
                                             <p>Min Deposit</p>
                                             <span>-</span>
-                                            <p>$3,000.00</p>
+                                            <p>$5,000.00</p>
                                         </div>
                                         <div className="w-full h-max flex justify-between">
-                                            <p>Min Deposit</p>
+                                            <p>Max Deposit</p>
                                             <span>-</span>
-                                            <p>$3,000.00</p>
+                                            <p>$50,000.00</p>
                                         </div>
                                         <div className="w-full h-max flex justify-between">
-                                            <p>Min Deposit</p>
+                                            <p>Total Return</p>
                                             <span>-</span>
-                                            <p>$3,000.00</p>
+                                            <p>$500,000.00</p>
                                         </div>
                                     </div>
                                     <p className="text-[rgb(111,131,165)] text-sm font-medium">
                                         ADDON
                                     </p>
                                     <p className="text-center text-[rgb(255,99,165)] text-sm">
-                                        Earn 10% Profit Daily on $3000-15000
+                                        Earn 10% Profit Daily on $5000-50000
                                     </p>
                                     <button className="bg-[#f5f6fa] border border-gray-300 rounded text-xs font-medium w-max h-max px-6 py-2 text-gray-500 mt-6">
                                         CHOOSE THIS PLAN
@@ -131,20 +131,20 @@ const Invest = () => {
                             <div className="w-[21rem] h-[30rem] border border-gray-100 bg-white rounded shadow">
                                 <div className="w-full h-[40%] flex flex-col items-center justify-between border-b border-b-gray-300 px-12 py-7">
                                     <p className="text-2xl text-[rgb(54,74,99)] font-semibold">
-                                        SILVER PLAN
+                                        GOLD PLAN
                                     </p>
                                     <p className="text-xs text-[rgb(128,148,174)] font-semibold">
                                         Enjoy entry level of invest earn money.
                                     </p>
                                     <div className="w-full h-max flex justify-between">
                                         <p className="text-3xl text-[rgb(54,74,99)] font-semibold flex flex-col gap-1 items-center">
-                                            10%{" "}
+                                            25%{" "}
                                             <span className="text-xs text-[rgb(128,148,174)] font-medium">
                                                 Daily Interest
                                             </span>
                                         </p>
                                         <p className="text-3xl text-[rgb(54,74,99)] font-semibold flex flex-col gap-1 items-center">
-                                            7
+                                            62
                                             <span className="text-xs text-[rgb(128,148,174)] font-medium">
                                                 Term Days
                                             </span>
@@ -156,24 +156,24 @@ const Invest = () => {
                                         <div className="w-full h-max flex justify-between">
                                             <p>Min Deposit</p>
                                             <span>-</span>
-                                            <p>$3,000.00</p>
+                                            <p>$10,000.00</p>
                                         </div>
                                         <div className="w-full h-max flex justify-between">
-                                            <p>Min Deposit</p>
+                                            <p>Max Deposit</p>
                                             <span>-</span>
-                                            <p>$3,000.00</p>
+                                            <p>$200,000.00</p>
                                         </div>
                                         <div className="w-full h-max flex justify-between">
-                                            <p>Min Deposit</p>
+                                            <p>Total Return</p>
                                             <span>-</span>
-                                            <p>$3,000.00</p>
+                                            <p>$3,300,000.00</p>
                                         </div>
                                     </div>
                                     <p className="text-[rgb(111,131,165)] text-sm font-medium">
                                         ADDON
                                     </p>
                                     <p className="text-center text-[rgb(255,99,165)] text-sm">
-                                        Earn 10% Profit Daily on $3000-15000
+                                        Earn 10% Profit Daily on $10000-200000
                                     </p>
                                     <button className="bg-[#f5f6fa] border border-gray-300 rounded text-xs font-medium w-max h-max px-6 py-2 text-gray-500 mt-6">
                                         CHOOSE THIS PLAN
@@ -183,14 +183,66 @@ const Invest = () => {
                             <div className="w-[21rem] h-[30rem] border border-gray-100 bg-white rounded shadow">
                                 <div className="w-full h-[40%] flex flex-col items-center justify-between border-b border-b-gray-300 px-12 py-7">
                                     <p className="text-2xl text-[rgb(54,74,99)] font-semibold">
-                                        SILVER PLAN
+                                        MAX PLAN
                                     </p>
                                     <p className="text-xs text-[rgb(128,148,174)] font-semibold">
                                         Enjoy entry level of invest earn money.
                                     </p>
                                     <div className="w-full h-max flex justify-between">
                                         <p className="text-3xl text-[rgb(54,74,99)] font-semibold flex flex-col gap-1 items-center">
-                                            10%{" "}
+                                            37%{" "}
+                                            <span className="text-xs text-[rgb(128,148,174)] font-medium">
+                                                Daily Interest
+                                            </span>
+                                        </p>
+                                        <p className="text-3xl text-[rgb(54,74,99)] font-semibold flex flex-col gap-1 items-center">
+                                            15
+                                            <span className="text-xs text-[rgb(128,148,174)] font-medium">
+                                                Term Days
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="w-full h-[60%] flex flex-col items-center gap-2 px-10 py-7">
+                                    <div className="w-full h-max flex flex-col text-[rgb(111,131,165)] text-sm font-medium gap-3">
+                                        <div className="w-full h-max flex justify-between">
+                                            <p>Min Deposit</p>
+                                            <span>-</span>
+                                            <p>$50,000.00</p>
+                                        </div>
+                                        <div className="w-full h-max flex justify-between">
+                                            <p>Max Deposit</p>
+                                            <span>-</span>
+                                            <p>$50,000.00</p>
+                                        </div>
+                                        <div className="w-full h-max flex justify-between">
+                                            <p>Total Return</p>
+                                            <span>-</span>
+                                            <p>$3,327,500.00</p>
+                                        </div>
+                                    </div>
+                                    <p className="text-[rgb(111,131,165)] text-sm font-medium">
+                                        ADDON
+                                    </p>
+                                    <p className="text-center text-[rgb(255,99,165)] text-sm">
+                                        Earn 10% Profit Daily on $50,000-500000
+                                    </p>
+                                    <button className="bg-[#f5f6fa] border border-gray-300 rounded text-xs font-medium w-max h-max px-6 py-2 text-gray-500 mt-6">
+                                        CHOOSE THIS PLAN
+                                    </button>
+                                </div>
+                            </div>
+                            <div className="w-[21rem] h-[30rem] border border-gray-100 bg-white rounded shadow">
+                                <div className="w-full h-[40%] flex flex-col items-center justify-between border-b border-b-gray-300 px-12 py-7">
+                                    <p className="text-2xl text-[rgb(54,74,99)] font-semibold">
+                                        DIAMOND PLAN
+                                    </p>
+                                    <p className="text-xs text-[rgb(128,148,174)] font-semibold">
+                                        Enjoy entry level of invest earn money.
+                                    </p>
+                                    <div className="w-full h-max flex justify-between">
+                                        <p className="text-3xl text-[rgb(54,74,99)] font-semibold flex flex-col gap-1 items-center">
+                                            52%{" "}
                                             <span className="text-xs text-[rgb(128,148,174)] font-medium">
                                                 Daily Interest
                                             </span>
@@ -208,24 +260,24 @@ const Invest = () => {
                                         <div className="w-full h-max flex justify-between">
                                             <p>Min Deposit</p>
                                             <span>-</span>
-                                            <p>$3,000.00</p>
+                                            <p>$100,000.00</p>
                                         </div>
                                         <div className="w-full h-max flex justify-between">
-                                            <p>Min Deposit</p>
+                                            <p>Max Deposit</p>
                                             <span>-</span>
-                                            <p>$3,000.00</p>
+                                            <p>$800,000.00</p>
                                         </div>
                                         <div className="w-full h-max flex justify-between">
-                                            <p>Min Deposit</p>
+                                            <p>Total Return</p>
                                             <span>-</span>
-                                            <p>$3,000.00</p>
+                                            <p>$4,960,000.00</p>
                                         </div>
                                     </div>
                                     <p className="text-[rgb(111,131,165)] text-sm font-medium">
                                         ADDON
                                     </p>
                                     <p className="text-center text-[rgb(255,99,165)] text-sm">
-                                        Earn 10% Profit Daily on $3000-15000
+                                        Earn 10% Profit Daily on $100000-800000
                                     </p>
                                     <button className="bg-[#f5f6fa] border border-gray-300 rounded text-xs font-medium w-max h-max px-6 py-2 text-gray-500 mt-6">
                                         CHOOSE THIS PLAN

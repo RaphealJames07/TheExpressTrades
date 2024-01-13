@@ -20,8 +20,6 @@ const Withdraw = () => {
                             <option value="">Select Method</option>
                             <option value="Method 1">Bitcoin</option>
                             <option value="Method 1">Ethereum</option>
-                            <option value="Method 1">Litecoin</option>
-                            <option value="Method 1">Bitcoin cash</option>
                         </select>
                         <button className="w-full h-10 bg-[#e14954] text-white rounded text-sm font-semibold">WITHDRAW</button>
                     </div>
