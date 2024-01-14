@@ -22,7 +22,7 @@ import Security from "./Pages/Security";
 import Payouts from "./Pages/Payouts";
 import Notification from "./Pages/Notification";
 import Admin from "./Admin/Admin";
-import AdminHome from "./Admin/AdminHome";
+// import AdminHome from "./Admin/AdminHome";
 import Users from "./Admin/Users";
 import AdminTransactions from "./Admin/AdminTransactions";
 
