@@ -167,7 +167,6 @@ import {FiPlusCircle} from "react-icons/fi";
 import {useSelector} from "react-redux";
 import {NavLink} from "react-router-dom";
 
-
 const Transactions = () => {
     const transaction = useSelector(
         (state) => state.expressTrade.expressTrade.transactions
@@ -227,7 +226,20 @@ const Transactions = () => {
                                                 ${item?.amount}
                                             </div>
                                             <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] ">
-                                                <p className="w-max h-max px-3 py-1 phone:py-1 text-white bg-yellow-400 rounded-full flex items-center justify-center">
+                                                <p
+                                                    className={`w-max h-max px-3 py-1 phone:py-1 text-white rounded-full flex items-center justify-center ${
+                                                        item?.status ===
+                                                        "Confirmed"
+                                                            ? "bg-green-400"
+                                                            : item?.status ===
+                                                              "Pending"
+                                                            ? "bg-yellow-400"
+                                                            : item?.status ===
+                                                              "Failed"
+                                                            ? "bg-red-400"
+                                                            : ""
+                                                    }`}
+                                                >
                                                     {item?.status}
                                                 </p>
                                             </div>
@@ -235,7 +247,14 @@ const Transactions = () => {
                                                 {item?.date}
                                             </div>
                                             <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
-                                                <BsEye className="w-5 h-5 cursor-pointer"  onClick={() => openProofOfPayment(item?.proofOfPayment)} />
+                                                <BsEye
+                                                    className="w-5 h-5 cursor-pointer"
+                                                    onClick={() =>
+                                                        openProofOfPayment(
+                                                            item?.proofOfPayment
+                                                        )
+                                                    }
+                                                />
                                             </div>
                                         </div>
                                     ))}
