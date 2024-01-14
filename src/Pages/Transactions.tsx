@@ -169,11 +169,11 @@ import {NavLink} from "react-router-dom";
 
 const Transactions = () => {
     const transaction = useSelector(
-        (state) => state.expressTrade.expressTrade.transactions
+        (state: any) => state.expressTrade.expressTrade.transactions
     );
     console.log(transaction);
 
-    const openProofOfPayment = (url) => {
+    const openProofOfPayment = (url: any) => {
         window.open(url, "_blank");
     };
 
@@ -208,56 +208,58 @@ const Transactions = () => {
                                     </div>
                                 </div>
                                 <div className="w-full h-max flex flex-col">
-                                    {transaction.map((item, index) => (
-                                        <div
-                                            className="w-max h-10 phone:h-20 border-t border-t-gray-300 pl-6 flex gap-4"
-                                            key={index}
-                                        >
-                                            <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
-                                                #
-                                                {item?._id
-                                                    ?.slice(-10)
-                                                    .toUpperCase()}
+                                    {transaction.map(
+                                        (item: any, index: any) => (
+                                            <div
+                                                className="w-max h-10 phone:h-20 border-t border-t-gray-300 pl-6 flex gap-4"
+                                                key={index}
+                                            >
+                                                <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
+                                                    #
+                                                    {item?._id
+                                                        ?.slice(-10)
+                                                        .toUpperCase()}
+                                                </div>
+                                                <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
+                                                    {item?.mode}
+                                                </div>
+                                                <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
+                                                    ${item?.amount}
+                                                </div>
+                                                <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] ">
+                                                    <p
+                                                        className={`w-max h-max px-3 py-1 phone:py-1 text-white rounded-full flex items-center justify-center ${
+                                                            item?.status ===
+                                                            "Confirmed"
+                                                                ? "bg-green-400"
+                                                                : item?.status ===
+                                                                  "Pending"
+                                                                ? "bg-yellow-400"
+                                                                : item?.status ===
+                                                                  "Failed"
+                                                                ? "bg-red-400"
+                                                                : ""
+                                                        }`}
+                                                    >
+                                                        {item?.status}
+                                                    </p>
+                                                </div>
+                                                <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
+                                                    {item?.date}
+                                                </div>
+                                                <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
+                                                    <BsEye
+                                                        className="w-5 h-5 cursor-pointer"
+                                                        onClick={() =>
+                                                            openProofOfPayment(
+                                                                item?.proofOfPayment
+                                                            )
+                                                        }
+                                                    />
+                                                </div>
                                             </div>
-                                            <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
-                                                {item?.mode}
-                                            </div>
-                                            <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
-                                                ${item?.amount}
-                                            </div>
-                                            <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] ">
-                                                <p
-                                                    className={`w-max h-max px-3 py-1 phone:py-1 text-white rounded-full flex items-center justify-center ${
-                                                        item?.status ===
-                                                        "Confirmed"
-                                                            ? "bg-green-400"
-                                                            : item?.status ===
-                                                              "Pending"
-                                                            ? "bg-yellow-400"
-                                                            : item?.status ===
-                                                              "Failed"
-                                                            ? "bg-red-400"
-                                                            : ""
-                                                    }`}
-                                                >
-                                                    {item?.status}
-                                                </p>
-                                            </div>
-                                            <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
-                                                {item?.date}
-                                            </div>
-                                            <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
-                                                <BsEye
-                                                    className="w-5 h-5 cursor-pointer"
-                                                    onClick={() =>
-                                                        openProofOfPayment(
-                                                            item?.proofOfPayment
-                                                        )
-                                                    }
-                                                />
-                                            </div>
-                                        </div>
-                                    ))}
+                                        )
+                                    )}
                                 </div>
                             </div>
                         </>
