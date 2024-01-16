@@ -88,7 +88,7 @@ const Register = () => {
         return (
             <>
                 <div className="w-full h-max flex items-center justify-center py-6 flex-col gap-6 ">
-                    <div className="w-[35%] phone:w-[95%] h-[145vh] phone:h-[115vh] bg-white rounded-[2rem] flex flex-col items-center px-10 phone:px-8 py-14 gap-5">
+                    <div className="w-[35%] phone:w-[95%] h-max phone:h-max bg-white rounded-[2rem] flex flex-col items-center px-10 phone:px-8 py-14 gap-5">
                         <p className="text-4xl phone:text-2xl font-semibold text-[#66cc33] mb-16">
                             Let's get started
                         </p>

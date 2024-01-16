@@ -39,7 +39,7 @@ const Home = () => {
         <>
             <div className="w-full h-max">
                 {showHeader2 && <Header />}
-                <div className="homebg phone:h-[110vh] ">
+                <div className="homebg phone:h-[110vh] smallPhone:h-[130vh] ">
                     <div
                         className={`${
                             smallScreen
@@ -139,7 +139,7 @@ const Home = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-full h-[120vh] phone:h-[80vh] flex phone:flex-col-reverse ">
+                    <div className="w-full h-[120vh] smallPhone:h-[110vh] phone:h-[80vh]  flex phone:flex-col-reverse ">
                         <div className="w-[70%] phone:w-full ph-h-0 h-max phone:full flex flex-col phone:items-center pl-28 phone:pl-0 pt-44 phone:pt-0 gap-8 text-white z-10">
                             <p className="text-8xl font-bold phone:w-full phone:text-center phone:text-5xl">
                                 Take Your Portfolio to the Next Level

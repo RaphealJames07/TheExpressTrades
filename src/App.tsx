@@ -25,101 +25,38 @@ import Admin from "./Admin/Admin";
 // import AdminHome from "./Admin/AdminHome";
 import Users from "./Admin/Users";
 import AdminTransactions from "./Admin/AdminTransactions";
+import PrivateRoute from "./Routes/PrivateRoute";
+import AdminPrivate from "./Routes/AdminPrivate";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: (
-            <>
-                <Home />
-            </>
-        ),
-    },
-    {
-        path: "/about",
-        element: (
-            <>
-                <About />
-            </>
-        ),
-    },
+    // Public routes remain unchanged
+    {path: "/", element: <Home />},
+    {path: "/contact", element: <Contact />},
+    {path: "/about", element: <About />},
+    {path: "/plans", element: <Plans />},
+    {path: "/faq", element: <Faq />},
+    {path: "/register", element: <Register />},
+    {path: "/login", element: <Login />},
+    {path: "/forget-password", element: <ForgetPassword />},
+    {path: "/verify", element: <Verify />},
+
     {
         path: "admin",
-        element: (
-            <>
-                <Admin />
-            </>
-        ),
+        element: <AdminPrivate element={<Admin />}></AdminPrivate>,
         children: [
             {
                 path: "users",
                 element: <Users />,
             },
             {
-                path: "transactions",
+                path: "transactions",   
                 element: <AdminTransactions />,
             },
         ],
     },
     {
-        path: "/plans",
-        element: (
-            <>
-                <Plans />
-            </>
-        ),
-    },
-    {
-        path: "/contact",
-        element: (
-            <>
-                <Contact />
-            </>
-        ),
-    },
-    {
-        path: "/faq",
-        element: (
-            <>
-                <Faq />
-            </>
-        ),
-    },
-    {
-        path: "/login",
-        element: (
-            <>
-                <Login />
-            </>
-        ),
-    },
-    {
-        path: "/forget-password",
-        element: (
-            <>
-                <ForgetPassword />
-            </>
-        ),
-    },
-    {
-        path: "/verify",
-        element: (
-            <>
-                <Verify />
-            </>
-        ),
-    },
-    {
-        path: "/register",
-        element: (
-            <>
-                <Register />
-            </>
-        ),
-    },
-    {
         path: "user",
-        element: <User />,
+        element: <PrivateRoute element={<User />}></PrivateRoute>,
         children: [
             {
                 path: "dashboard",

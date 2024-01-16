@@ -18,7 +18,7 @@ export default {
             phone: {max: "480px"},
             tab: "1024px",
             desktop: "1280px",
-            smallPhone: "351px",
+            smallPhone: {max: "351px"},
         },
     },
     plugins: [scrollbarPlugin()],

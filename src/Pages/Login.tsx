@@ -44,12 +44,25 @@ const Login = () => {
                 axios
                     .post(url, data)
                     .then((response) => {
+                        console.log(response);
                         dispatch(user(response?.data?.user));
                         dispatch(token(response?.data?.token));
                         setLoading(false);
                         toast.dismiss(toastLoadingId);
-                        console.log(response);
-                        nav("/user/dashboard");
+                        if (response?.data?.user?.isAdmin === true) {
+                            toast.success("Welcome Admin", {duration: 2000});
+                            setTimeout(() => {
+                                nav("/admin/users");
+                            }, 1000);
+                        } else {
+                            toast.success(
+                                `Welcome ${response?.data?.user?.fullName}`,
+                                {duration: 2000}
+                            );
+                            setTimeout(() => {
+                                nav("/user/dashboard");
+                            }, 1000);
+                        }
                     })
                     .catch((error) => {
                         setLoading(false);
@@ -78,7 +91,7 @@ const Login = () => {
         return (
             <>
                 <div className="w-full h-max flex items-center justify-center py-6 flex-col gap-6 ">
-                    <div className="w-[35%] phone:w-[95%] h-[85vh] phone:h-[80vh] bg-white rounded-[2rem] flex flex-col items-center px-10 phone:px-8 py-14 gap-5">
+                    <div className="w-[35%] phone:w-[95%] h-max phone:h-max smallPhone:h-max bg-white rounded-[2rem] flex flex-col items-center px-10 phone:px-8 py-14 gap-5">
                         <p className="text-4xl phone:text-2xl font-semibold text-[#66cc33] mb-16">
                             Login to your account
                         </p>

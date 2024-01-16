@@ -57,7 +57,7 @@ const Footer = () => {
                         MAKING PAYMENTS TO ANY ACCOUNT MANAGER. THANK YOU FOR
                         YOUR UNDERSTANDING AND COOPERATION.
                     </p>
-                    <div className="w-full h-20 flex justify-between items-center phone:flex-col phone:gap-5">
+                    <div className="w-full h-24 flex justify-between items-center phone:flex-col gap-2">
                         <p className="text-lg text-white">©2023. All rights reserved</p>
                         <div className="w-max h-full flex items-center gap-5">
                             <div className="w-10 h-10 rounded-full cursor-pointer hover:bg-indigo-500 transition-all border border-white"></div>

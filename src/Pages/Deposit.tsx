@@ -5,8 +5,16 @@ import ethCode from "../assets/ethcode.jpg";
 import {useState} from "react";
 import {IoMdArrowRoundBack} from "react-icons/io";
 import toast from "react-hot-toast";
+import axios from "axios";
+import {useSelector} from "react-redux";
 
 const Deposit = () => {
+    const user = useSelector(
+        (state: any) => state.expressTrade.expressTrade.tradeUser
+    );
+    const userToken = useSelector(
+        (state: any) => state.expressTrade.expressTrade.userToken
+    );
     const [btc, setBtc] = useState<boolean>(false);
     const [eth, setEth] = useState<boolean>(false);
     const [isBtcPay, setIsBtcPay] = useState<boolean>(false);
@@ -14,6 +22,7 @@ const Deposit = () => {
     const [direct, setDirect] = useState<boolean>(false);
     const [isPayed, setIsPayed] = useState<boolean>(false);
     const [amount, setAmount] = useState<string>("");
+    const [mode, setMode] = useState<string>("");
     const [fileInput, setFileInput] = useState<HTMLInputElement | null>(null);
 
     const handleSelectBtc = () => {
@@ -55,24 +64,59 @@ const Deposit = () => {
 
     const [selectedFileName, setSelectedFileName] =
         useState<string>("Click to select");
+    const [file, setFile] = useState<any>();
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        // Handle file change event
-        const fileName = e.target.files?.[0]?.name || "Click to select";
-        setSelectedFileName(fileName);
-        // alert(`Selected file: ${fileName}`);
+        const file = e.target.files?.[0];
+    if (file) {
+        setFile(file);
+        setSelectedFileName(file.name);
+    }
     };
 
     const handleIsPayed = () => {
         setIsPayed(true);
-        const toastLoadingId = toast.loading("Please wait...");
-        setTimeout(() => {
-            toast.dismiss(toastLoadingId);
-            toast.success(
-                "Your deposit is pending, when the admin confirms payment your account will be credited",
-                {duration: 5000}
-            );
-        }, 3000);
+        if (btc === true) {
+            setMode("Bitcoin");
+        } else {
+            setMode("Ethereum");
+        }
+    };
+
+    const handleSubmit = () => {
+        console.log(amount);
+        const data = new FormData();
+        data.append("proofOfPayment", file);
+        data.append("file", file);
+        data.append("amount", amount);
+        data.append("user", user._id);
+        data.append("fullName", user.fullName);
+        data.append("mode", mode);
+        // console.log("Here's",data);
+
+        const url = "https://express-trades.vercel.app/api/v1/user/payment";
+        const token = userToken;
+        const headers = {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data", // Make sure to set the correct content type
+        };
+        console.log("Data to post:", data);
+        axios
+            .post(url, data, {headers})
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        // const toastLoadingId = toast.loading("Please wait...");
+        // setTimeout(() => {
+        //     toast.dismiss(toastLoadingId);
+        //     toast.success(
+        //         "Your deposit is pending, when the admin confirms payment your account will be credited",
+        //         {duration: 5000}
+        //     );
+        // }, 3000);
     };
 
     return (
@@ -148,15 +192,21 @@ const Deposit = () => {
                                         </div>
                                     </div>
                                 ) : null}
-
-                                <button
-                                    className="w-max h-max rounded text-white text-base font-semibold py-2 px-6 bg-[#e14954]"
-                                    onClick={handleIsPayed}
-                                >
-                                    {isPayed
-                                        ? "Submit"
-                                        : "I have sent the coin"}
-                                </button>
+                                {isPayed ? (
+                                    <button
+                                        className="w-max h-max rounded text-white text-base font-semibold py-2 px-6 bg-[#e14954]"
+                                        onClick={handleSubmit}
+                                    >
+                                        Submit
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="w-max h-max rounded text-white text-base font-semibold py-2 px-6 bg-[#e14954]"
+                                        onClick={handleIsPayed}
+                                    >
+                                        I have sent the coin
+                                    </button>
+                                )}
                             </div>
                         </>
                     ) : direct === true && isEthPay === true ? (
@@ -192,9 +242,57 @@ const Deposit = () => {
                                 <div className="w-48 h-48 flex items-center justify-center">
                                     <img src={ethCode} alt="" className="" />
                                 </div>
-                                <button className="w-max h-max rounded text-white text-base font-semibold py-2 px-6 bg-[#e14954]">
-                                    I've sent the coin
-                                </button>
+                                {isPayed ? (
+                                    <div className="w-full h-max flex flex-col mt-10 gap-10">
+                                        <div className="w-full h-24 border border-[rgb(205,159,12)] bg-[#fef7e2] rounded flex flex-col items-center justify-center gap-1">
+                                            <p className="text-sm text-[rgb(205,159,12)]">
+                                                {" "}
+                                                Attach your proof of payment
+                                                below.
+                                            </p>
+                                            <p className="text-sm text-[rgb(205,159,12)] font-medium">
+                                                {" "}
+                                                Accepted format: .JPG, .PNG,
+                                                .GIF, .PDF
+                                            </p>
+                                        </div>
+                                        <div className="w-full h-10 border border-gray-300 rounded flex">
+                                            <input
+                                                type="file"
+                                                accept="image/jpeg, image/png, image/gif, application/pdf"
+                                                className="hidden"
+                                                onChange={handleFileChange}
+                                                ref={(input) =>
+                                                    setFileInput(input)
+                                                }
+                                                id="fileInput"
+                                            />
+                                            <label
+                                                className="cursor-pointer w-full h-full border-none outline-none flex justify-center items-center bg-gray-200 rounded"
+                                                htmlFor="fileInput"
+                                            >
+                                                <div className="w-max px-2 flex items-center justify-center h-full">
+                                                    {selectedFileName}
+                                                </div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                ) : null}
+                                {isPayed ? (
+                                    <button
+                                        className="w-max h-max rounded text-white text-base font-semibold py-2 px-6 bg-[#e14954]"
+                                        onClick={handleSubmit}
+                                    >
+                                        Submit
+                                    </button>
+                                ) : (
+                                    <button
+                                        className="w-max h-max rounded text-white text-base font-semibold py-2 px-6 bg-[#e14954]"
+                                        onClick={handleIsPayed}
+                                    >
+                                        I have sent the coin
+                                    </button>
+                                )}
                             </div>
                         </>
                     ) : (

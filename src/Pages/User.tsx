@@ -29,7 +29,7 @@ const User = () => {
 
     const getOne = () => {
         console.log("Getting transaction...");
-        const url = `https://express-trades.vercel.app/api/v1/user/all-payments`;
+        const url = `https://express-trades.vercel.app/api/v1/user/transactions`;
         const token = userToken;
         const headers = {
             Authorization: `Bearer ${token}`,

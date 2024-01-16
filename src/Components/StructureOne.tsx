@@ -43,7 +43,7 @@ const StructureOne: React.FC<StructureOneProps> = ({content}) => {
         <>
             <div className="w-full h-max">
                 {showHeader2 && <Header />}
-                <div className="threebg phone:h-[140vh] ">
+                <div className="threebg phone:h-max ">
                     <div
                         className={`${
                             smallScreen

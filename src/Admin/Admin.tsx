@@ -1,11 +1,24 @@
 import {Outlet} from "react-router";
 import logo from "../assets/TheExpressTradesLogo.svg";
 import {BiUser} from "react-icons/bi";
-import {useState} from "react";
-import { NavLink } from "react-router-dom";
+import { useState} from "react";
+import {NavLink} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {logout} from "../Redux/Features";
+import {useNavigate} from "react-router";
+// import axios from "axios";
 
 const Admin = () => {
+    const nav = useNavigate();
+    const dispatch = useDispatch();
     const [show, setShow] = useState<boolean>(false);
+
+    const handleLogout = () => {
+        dispatch(logout());
+        nav("/");
+    };
+    
+
     return (
         <>
             <div className="w-full h-max bg-sky-50">
@@ -24,7 +37,10 @@ const Admin = () => {
                                     <p>Rapheal James</p>
                                     <p className="text-xs">james@admin.com</p>
                                 </div>
-                                <button className="w-max h-max px-2 py-2 rounded text-xs font-medium bg-slate-200">
+                                <button
+                                    className="w-max h-max px-2 py-2 rounded text-xs font-medium bg-slate-200"
+                                    onClick={handleLogout}
+                                >
                                     SignOut
                                 </button>
                             </div>
@@ -44,7 +60,7 @@ const Admin = () => {
                             </div>
                         </NavLink>
                     </div>
-                    <Outlet/>
+                    <Outlet />
                 </div>
             </div>
         </>

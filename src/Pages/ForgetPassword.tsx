@@ -5,8 +5,8 @@ const ForgetPassword = () => {
     const ForgetPasswordContent = () => {
         return (
             <>
-                <div className="w-full h-max flex items-center justify-center py-6 flex-col gap-6  pb-32 phone:pb-48">
-                    <div className="w-[35%] phone:w-[95%] h-[60vh] phone:h-[55vh] bg-white rounded-[2rem] flex flex-col items-center px-10 phone:px-8 py-14 gap-5">
+                <div className="w-full h-max flex items-center justify-center py-6 flex-col gap-6  pb-32 phone:pb-10">
+                    <div className="w-[35%] phone:w-[95%] h-max phone:h-max bg-white rounded-[2rem] flex flex-col items-center px-10 phone:px-8 py-14 gap-5">
                         <p className="text-4xl phone:text-2xl font-semibold text-[#66cc33] mb-16">
                             Reset password
                         </p>
