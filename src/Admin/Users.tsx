@@ -53,7 +53,7 @@ const Users = () => {
                     console.log(response);
                     setLoading(false);
                     getAllUsers();
-                    setCrebitAmount("");
+                    setCrebitAmount(0);
                     setCrebitType("");
                     toast.success(
                         `${selectedUserData?.userName} ${crebitType}ed successfully`
@@ -87,7 +87,7 @@ const Users = () => {
                     console.log(response);
                     setLoading(false);
                     getAllUsers();
-                    setCrebitAmount("");
+                    setCrebitAmount(0);
                     setCrebitType("");
                     toast.success(`Account Deleted Successfully`);
                 })
@@ -127,7 +127,7 @@ const Users = () => {
     };
 
     const handleShow = (index: any) => {
-        setCrebitAmount("");
+        setCrebitAmount(0);
         setCrebitType("");
         const newShowMenu = [...showMenu];
         newShowMenu[index] = !newShowMenu[index];

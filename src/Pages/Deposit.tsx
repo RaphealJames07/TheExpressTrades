@@ -4,7 +4,7 @@ import btcCode from "../assets/btccode.jpg";
 import ethCode from "../assets/ethcode.jpg";
 import {useState} from "react";
 import {IoMdArrowRoundBack} from "react-icons/io";
-import toast from "react-hot-toast";
+// import toast from "react-hot-toast";
 import axios from "axios";
 import {useSelector} from "react-redux";
 
