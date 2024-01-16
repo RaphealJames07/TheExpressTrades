@@ -20,11 +20,30 @@ import feature1 from "../assets/feature-icon-1.png";
 import feature2 from "../assets/feature-icon-3.png";
 import feature3 from "../assets/feature-icon-2.png";
 import feature4 from "../assets/feature-icon-4.png";
+import arrowRight from "../assets/arrow-right.png";
+import offerIcon1 from "../assets/offer-icon-1.png";
+import offerIcon2 from "../assets/offer-icon-2.png";
+import icon1 from "../assets/icon-1.png";
+import icon2 from "../assets/icon-2.png";
+import DepositPeeps from "./DepositPeeps";
+import WithdrawPeeps from "./WithdrawPeeps";
+import TradinViewWidgetFour from "../Components/TradinViewWidgetFour";
 
 const Home = () => {
     const [showHeader2, setShowHeader2] = useState(false);
     const [smallScreen, setSmallScreen] = useState(false);
     const [dropNav, setDropNav] = useState(false);
+    const [showDepositP, setShowDepositP] = useState(true);
+    const [showWithdrawP, setShowWithdrawP] = useState(false);
+
+    const handleDepositP = () => {
+        setShowDepositP(true);
+        setShowWithdrawP(false);
+    };
+    const handleWithdrawP = () => {
+        setShowDepositP(false);
+        setShowWithdrawP(true);
+    };
 
     const handleScroll = () => {
         const scrollPosition = window.scrollY;
@@ -437,10 +456,163 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full h-max offerBg">
-                    <div className="w-full h-max px-24 phone:px-5 mt-32">
-
+                <div className="w-full h-max depositBg mt-32">
+                    <div className="w-full h-[100vh] phone:h-[120vh] px-24 phone:px-5 ">
+                        <div className="w-full h-[50%] phone:h-[35%] flex flex-col items-center justify-center gap-6">
+                            <p className="text-[rgb(255,173,79)] phone:text-xl text-2xl font-semibold">
+                                Our investment offer
+                            </p>
+                            <p className="text-[rgb(102,204,51)] phone:text-center phone:text-4xl text-6xl font-bold">
+                                Deposit Portfolio
+                            </p>
+                            <p className="text-[rgb(102,204,51)] w-1/2 phone:w-full text-center phone:text-center text-lg">
+                                Your total income directly depends on the amount
+                                you invest, so the more you contribute, the more
+                                you can earn.
+                            </p>
+                        </div>
+                        <div className="w-full h-[50%] phone:h-[65%] flex flex-col bg-white rounded-t-2xl justify-between gap-6 items-center px-12 pt-8">
+                            <p className="text-[rgb(102,204,51)] text-3xl font-semibold">
+                                We are Offering
+                            </p>
+                            <div className="w-full h-max rounded-3xl bgShe">
+                                <div className="w-full h-60 phone:h-[35rem] flex phone:flex-col items-center justify-between px-28 phone:px-8 phone:py-8">
+                                    <div className="w-80 h-[80%] phone:h-[40%] phone:w-full rounded-3xl border border-gray-300 bg-[#ffffff17] flex items-center justify-center gap-4 phone:gap-6">
+                                        <img
+                                            src={offerIcon1}
+                                            alt=""
+                                            className="w-16 h-16"
+                                        />
+                                        <p className="flex flex-col gap-4 text-4xl text-white font-bold">
+                                            200%{" "}
+                                            <span className="text-base font-normal">
+                                                Daily Profit
+                                            </span>
+                                        </p>
+                                    </div>
+                                    <div className="w-max h-max ">
+                                        <img
+                                            src={arrowRight}
+                                            alt=""
+                                            className="phone:rotate-90"
+                                        />
+                                    </div>
+                                    <div className="w-80 h-[80%] phone:h-[40%] phone:w-full rounded-3xl border border-gray-300 bg-[#ffffff17] flex items-center justify-center gap-4 phone:gap-6">
+                                        <img
+                                            src={offerIcon2}
+                                            alt=""
+                                            className="w-16 h-16"
+                                        />
+                                        <p className="flex flex-col gap-4 text-4xl text-white font-bold">
+                                            200%{" "}
+                                            <span className="text-base font-normal">
+                                                Daily Profit
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+                <div className="w-full h-max px-24 phone:px-5 mt-24 flex flex-col gap-8">
+                    <p className="text-[rgb(102,204,51)] text-6xl phone:text-3xl font-semibold text-center">
+                        Investment Packages
+                    </p>
+                    <div className="w-full h-max flex justify-between gap-8 phone:flex-col phone:gap-3">
+                        <div className="w-1/4 phone:w-full h-72 bg-gradient-to-tr from-[#903eff] to-[#3e19ff] rounded-3xl flex flex-col items-center justify-center text-white text-2xl gap-2">
+                            <p>SILVER PLAN</p>
+                            <p>$3,000.00</p>
+                            <p>MAX DEPOSIT: $15,000.00</p>
+                            <p>DAILY ROI: 10%</p>
+                            <p>DURATION: 7 days</p>
+                            <button className="w-max h-max px-3 py-2 bg-yellow-400 text-black rounded text-base flex items-center justify-center">
+                                Invest Now
+                            </button>
+                        </div>
+                        <div className="w-1/4 phone:w-full h-72 bg-gradient-to-tr from-[#903eff] to-[#3e19ff] rounded-3xl flex flex-col items-center justify-center text-white text-2xl gap-2">
+                            <p>SUPER PLAN</p>
+                            <p>$5,000.00</p>
+                            <p>MAX DEPOSIT: $50,000.00</p>
+                            <p>DAILY ROI: 15%</p>
+                            <p>DURATION: 2 months</p>
+                            <button className="w-max h-max px-3 py-2 bg-yellow-400 text-black rounded text-base flex items-center justify-center">
+                                Invest Now
+                            </button>
+                        </div>
+                        <div className="w-1/4 phone:w-full h-72 bg-gradient-to-tr from-[#903eff] to-[#3e19ff] rounded-3xl flex flex-col items-center justify-center text-white text-2xl gap-2">
+                            <p>GOLD PLAN</p>
+                            <p>$10,000.00</p>
+                            <p>MAX DEPOSIT: $200,000.00</p>
+                            <p>DAILY ROI: 25%</p>
+                            <p>DURATION: 62 days</p>
+                            <button className="w-max h-max px-3 py-2 bg-yellow-400 text-black rounded text-base flex items-center justify-center">
+                                Invest Now
+                            </button>
+                        </div>
+                        <div className="w-1/4 phone:w-full h-72 bg-gradient-to-tr from-[#903eff] to-[#3e19ff] rounded-3xl flex flex-col items-center justify-center text-white text-2xl gap-2">
+                            <p>MAX PLAN</p>
+                            <p>$50,000.00</p>
+                            <p>MAX DEPOSIT: $50,000.00</p>
+                            <p>DAILY ROI: 37%</p>
+                            <p>DURATION: 15 days</p>
+                            <button className="w-max h-max px-3 py-2 bg-yellow-400 text-black rounded text-base flex items-center justify-center">
+                                Invest Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div className="w-full h-max mt-20 tableBg">
+                    <div className="w-full h-max px-24 phone:px-5 phone:items-center flex flex-col justify-center">
+                        <div className="w-full h-max flex flex-col gap-6 items-center mt-24 text-white">
+                            <p className=" text-2xl font-semibold text-center">
+                                User Statistics
+                            </p>
+                            <p className="text-6xl font-semibold text-center phone:text-4xl">
+                                Latest Transaction
+                            </p>
+                            <p className="text-lg w-[60%] phone:w-full flex text-center">
+                                Our goal is to simplify investing so that anyone
+                                can be an investor. With this in mind, we
+                                hand-pick the investments we offer on our
+                                platform.
+                            </p>
+                        </div>
+                        <div className="w-full h-max phone:flex phone:flex-col phone:gap-4 bg-white mt-16 py-20 px-5">
+                            <div className="w-full h-28 flex phone:flex-col phone:items-center justify-center gap-6">
+                                <div className="w-max h-max flex  px-8 py-3 items-center justify-center gap-4 rounded-full bg-indigo-700 text-white cursor-pointer" onClick={handleDepositP}>
+                                    <img src={icon1} alt="" />
+                                    <p className="flex flex-col font-bold text-sm">
+                                        LATEST <span>DEPOSITS</span>
+                                    </p>
+                                </div>
+                                <div className="w-max h-max flex px-8 py-3 items-center justify-center gap-4 rounded-full bg-orange-300 text-white cursor-pointer" onClick={handleWithdrawP}>
+                                    <img src={icon2} alt="" />
+                                    <p className="flex flex-col font-bold text-sm">
+                                        LATEST <span>DEPOSITS</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="w-full overflow-y-auto h-max">
+                                {showDepositP ? (
+                                    <DepositPeeps />
+                                ) : showWithdrawP ? (
+                                    <WithdrawPeeps />
+                                ) : null}
+                            </div>
+                            <div className="w-full flex items-center justify-center h-20">
+                                <button className="px-8 py-3 bg-gradient-to-r from-[#903eff] via-transparent to-indigo-900 hover:from-indigo-900 hover:via-transparent hover:to-[#903eff] h-max w-max rounded-full text-white">
+                                    Get Started
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="w-full h-max flex justify-center items-center">
+                    <TradinViewWidgetFour/>
+                </div>
+                <div className="w-full h-max">
+
                 </div>
                 <Footer />
             </div>

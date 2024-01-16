@@ -35,6 +35,30 @@
   width: 100%;
   height: max-content;
 }
+.depositBg {
+  background-image: url(./assets/deposit-bg.png);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: max-content;
+}
+.bgShe {
+  background-image: url(./assets/offer-box-bg.png);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: max-content;
+}
+.tableBg {
+  background-image: url(./assets/table-bg.png);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: max-content;
+}
 
 .ant-drawer-body{
   padding: 0 !important;
