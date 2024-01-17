@@ -76,6 +76,7 @@ const AdminTransactions = () => {
                 setLoading(false);
                 getAllTransactions();
                 toast.success(`Payment Confirmed`);
+                setOpenConfirm(false);
             })
             .catch((error) => {
                 setLoading(false);
