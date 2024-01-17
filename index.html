@@ -1,6 +1,50 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      "use strict";
+      
+      !function() {
+        var t = window.driftt = window.drift = window.driftt || [];
+        if (!t.init) {
+          if (t.invoked) return void (window.console && console.error && console.error("Drift snippet included twice."));
+          t.invoked = !0, t.methods = [ "identify", "config", "track", "reset", "debug", "show", "ping", "page", "hide", "off", "on" ], 
+          t.factory = function(e) {
+            return function() {
+              var n = Array.prototype.slice.call(arguments);
+              return n.unshift(e), t.push(n), t;
+            };
+          }, t.methods.forEach(function(e) {
+            t[e] = t.factory(e);
+          }), t.load = function(t) {
+            var e = 3e5, n = Math.ceil(new Date() / e) * e, o = document.createElement("script");
+            o.type = "text/javascript", o.async = !0, o.crossorigin = "anonymous", o.src = "https://js.driftt.com/include/" + n + "/" + t + ".js";
+            var i = document.getElementsByTagName("script")[0];
+            i.parentNode.insertBefore(o, i);
+          };
+        }
+      }();
+      drift.SNIPPET_VERSION = '0.3.1';
+      drift.load('kh5wvevw4dw8');
+      </script>
+      <!-- End of Async Drift Code -->  
+      
+      <meta charset="UTF-8" />
+        <meta
+          name="description"
+          content="Our platform is suitable for all traders, both beginners, and
+          professionals. Triangular or triple arbitrage is the result of a price
+          difference between the three currencies when exchange rates do not
+          match. Such discrepancies are common in the cryptocurrency market.
+          Using our software and powerful servers, we make arbitrage
+          transactions within 1 exchange almost in real-time.
+          We are committed to providing all our investors with exceptional service while
+          offering our team the best training."
+        />
+        <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+      />
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/src/assets/TheExpressTradesLogo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
