@@ -7,6 +7,7 @@ import {IoMdArrowRoundBack} from "react-icons/io";
 // import toast from "react-hot-toast";
 import axios from "axios";
 import {useSelector} from "react-redux";
+import toast from "react-hot-toast";
 
 const Deposit = () => {
     const user = useSelector(
@@ -17,6 +18,7 @@ const Deposit = () => {
     );
     const [btc, setBtc] = useState<boolean>(false);
     const [eth, setEth] = useState<boolean>(false);
+    const [loading, setLoading] = useState<boolean>(false);
     const [isBtcPay, setIsBtcPay] = useState<boolean>(false);
     const [isEthPay, setIsEthPay] = useState<boolean>(false);
     const [direct, setDirect] = useState<boolean>(false);
@@ -68,10 +70,10 @@ const Deposit = () => {
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-    if (file) {
-        setFile(file);
-        setSelectedFileName(file.name);
-    }
+        if (file) {
+            setFile(file);
+            setSelectedFileName(file.name);
+        }
     };
 
     const handleIsPayed = () => {
@@ -84,6 +86,8 @@ const Deposit = () => {
     };
 
     const handleSubmit = () => {
+        const toastLoadingId = toast.loading("Please wait...");
+        setLoading(true)
         console.log(amount);
         const data = new FormData();
         data.append("proofOfPayment", file);
@@ -104,19 +108,17 @@ const Deposit = () => {
         axios
             .post(url, data, {headers})
             .then((response) => {
+                toast.dismiss(toastLoadingId);
+                toast.success("Deposit pending, awaiting confirmation..");
                 console.log(response);
+                setLoading(false)
             })
             .catch((error) => {
+                toast.dismiss(toastLoadingId);
+                toast.error("Error Occured please try again or contact admin");
                 console.log(error);
+                setLoading(false)
             });
-        // const toastLoadingId = toast.loading("Please wait...");
-        // setTimeout(() => {
-        //     toast.dismiss(toastLoadingId);
-        //     toast.success(
-        //         "Your deposit is pending, when the admin confirms payment your account will be credited",
-        //         {duration: 5000}
-        //     );
-        // }, 3000);
     };
 
     return (
@@ -196,8 +198,11 @@ const Deposit = () => {
                                     <button
                                         className="w-max h-max rounded text-white text-base font-semibold py-2 px-6 bg-[#e14954]"
                                         onClick={handleSubmit}
+                                        disabled={loading}
                                     >
-                                        Submit
+                                        {
+                                            loading? "Processing..." : "Submit"
+                                        }
                                     </button>
                                 ) : (
                                     <button

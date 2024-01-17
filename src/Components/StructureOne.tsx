@@ -72,12 +72,12 @@ const StructureOne: React.FC<StructureOneProps> = ({content}) => {
                                             Plans
                                         </li>
                                     </NavLink>
-                                    <NavLink to={"contact"}>
+                                    <NavLink to={"/contact"}>
                                         <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
                                             Contact
                                         </li>
                                     </NavLink>
-                                    <NavLink to={"faq"}>
+                                    <NavLink to={"/faq"}>
                                         <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
                                             FAQ
                                         </li>
