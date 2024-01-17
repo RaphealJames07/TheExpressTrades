@@ -580,13 +580,19 @@ const Home = () => {
                         </div>
                         <div className="w-full h-max phone:flex phone:flex-col phone:gap-4 bg-white mt-16 py-20 px-5">
                             <div className="w-full h-28 flex phone:flex-col phone:items-center justify-center gap-6">
-                                <div className="w-max h-max flex  px-8 py-3 items-center justify-center gap-4 rounded-full bg-indigo-700 text-white cursor-pointer" onClick={handleDepositP}>
+                                <div
+                                    className="w-max h-max flex  px-8 py-3 items-center justify-center gap-4 rounded-full bg-indigo-700 text-white cursor-pointer"
+                                    onClick={handleDepositP}
+                                >
                                     <img src={icon1} alt="" />
                                     <p className="flex flex-col font-bold text-sm">
                                         LATEST <span>DEPOSITS</span>
                                     </p>
                                 </div>
-                                <div className="w-max h-max flex px-8 py-3 items-center justify-center gap-4 rounded-full bg-orange-300 text-white cursor-pointer" onClick={handleWithdrawP}>
+                                <div
+                                    className="w-max h-max flex px-8 py-3 items-center justify-center gap-4 rounded-full bg-orange-300 text-white cursor-pointer"
+                                    onClick={handleWithdrawP}
+                                >
                                     <img src={icon2} alt="" />
                                     <p className="flex flex-col font-bold text-sm">
                                         LATEST <span>DEPOSITS</span>
@@ -609,10 +615,41 @@ const Home = () => {
                     </div>
                 </div>
                 <div className="w-full h-max flex justify-center items-center">
-                    <TradinViewWidgetFour/>
+                    <TradinViewWidgetFour />
                 </div>
-                <div className="w-full h-max">
-
+                <div className="w-full h-max px-24 mt-8 counterBg py-10 flex phone:flex-col">
+                    <div className="w-1/4 phone:w-full phone:border-r-0 h-32 flex items-center justify-center border-r border-r-gray-300">
+                        <p className="flex flex-col text-white text-4xl font-semibold text-center gap-3">
+                            114,963K{" "}
+                            <span className="text-lg font-normal">
+                                Registered users
+                            </span>
+                        </p>
+                    </div>
+                    <div className="w-1/4 phone:w-full phone:border-r-0 h-32 flex items-center justify-center border-r border-r-gray-300">
+                        <p className="flex flex-col text-white text-4xl font-semibold text-center gap-3">
+                            198{" "}
+                            <span className="text-lg font-normal">
+                                Countries Supported
+                            </span>
+                        </p>
+                    </div>
+                    <div className="w-1/4 phone:w-full phone:border-r-0 h-32 flex items-center justify-center border-r border-r-gray-300">
+                        <p className="flex flex-col text-white text-4xl font-semibold text-center gap-3">
+                            $3M{" "}
+                            <span className="text-lg font-normal">
+                                Withdrawn each month
+                            </span>
+                        </p>
+                    </div>
+                    <div className="w-1/4 phone:w-full phone:border-r-0 h-32 flex items-center justify-center">
+                        <p className="flex flex-col text-white text-4xl font-semibold text-center gap-3">
+                            114,963K{" "}
+                            <span className="text-lg font-normal">
+                                Active investors daily
+                            </span>
+                        </p>
+                    </div>
                 </div>
                 <Footer />
             </div>

@@ -59,6 +59,14 @@
   width: 100%;
   height: max-content;
 }
+.counterBg {
+  background-image: url(./assets/counter-bg.png);
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: max-content;
+}
 
 .ant-drawer-body{
   padding: 0 !important;

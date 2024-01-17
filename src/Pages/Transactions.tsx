@@ -221,7 +221,7 @@ const Transactions = () => {
                                                         .toUpperCase()}
                                                 </div>
                                                 <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
-                                                    {item?.mode}
+                                                    {item?.type}/{item?.mode}
                                                 </div>
                                                 <div className="w-[10.5rem] h-full flex items-center text-xs text-[rgb(128,148,174)] font-medium">
                                                     ${item?.amount}

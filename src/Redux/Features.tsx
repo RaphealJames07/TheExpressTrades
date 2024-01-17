@@ -6,6 +6,7 @@ const initialState = {
     userToken: "",
     getOneUser: {},
     transactions: [],
+    adminTransactions: [],
 };
 
 const features = createSlice({
@@ -28,6 +29,10 @@ const features = createSlice({
             state.transactions = payload;
             console.log("User Data Transactions:", payload);
         },
+        adminTransactionView: (state, {payload}) => {
+            state.adminTransactions = payload;
+            console.log("All admin Transactions:", payload);
+        },
         token: (state, {payload}) => {
             state.userToken = payload;
             console.log("User Token:", payload);
@@ -37,12 +42,13 @@ const features = createSlice({
             state.userToken = "";
             state.getOneUser = {};
             state.transactions = [];
-            state.allAdminUsers = []
+            state.allAdminUsers = [];
+            state.adminTransactions = []
         },
     },
 });
 
-export const {user, logout, token, oneUser, userTransactions, allUsers} =
+export const {user, logout, token, oneUser, userTransactions, allUsers, adminTransactionView} =
     features.actions;
 
 export default features.reducer;

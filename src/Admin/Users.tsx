@@ -27,6 +27,7 @@ const Users = () => {
 
     const [crebit, setCrebit] = useState<boolean>(false);
     const [openSuspend, setOpenSuspend] = useState<boolean>(false);
+    const [shudSuspend, setShudSuspend] = useState<boolean>(false);
     const [openDelete, setOpenDelete] = useState<boolean>(false);
     const [adminPassword, setAdminPassword] = useState<string>("");
     const [crebitAmount, setCrebitAmount] = useState<number>();
@@ -102,7 +103,7 @@ const Users = () => {
         const toastLoadingId = toast.loading("Please wait...");
         setLoading(true);
         const url = `https://express-trades.vercel.app/api/v1/user/suspend/${selectedUserData?._id}`;
-        const data ={}
+        const data = {};
 
         const token = userToken;
         const headers = {
@@ -115,8 +116,8 @@ const Users = () => {
                 toast.dismiss(toastLoadingId);
                 console.log(response);
                 setLoading(false);
-                // getAllUsers();
-
+                getAllUsers();
+                setOpenSuspend(false)
                 toast.success(`Account Suspended Successfully`);
             })
             .catch((error) => {
@@ -125,6 +126,42 @@ const Users = () => {
                 console.log(error);
             });
     };
+    const handleUnSuspend = () => {
+        const toastLoadingId = toast.loading("Please wait...");
+        setLoading(true);
+        const url = `https://express-trades.vercel.app/api/v1/user/un-suspend/${selectedUserData?._id}`;
+        const data = {};
+
+        const token = userToken;
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        axios
+            .post(url, data, {headers})
+            .then((response) => {
+                setLoading(false);
+                toast.dismiss(toastLoadingId);
+                console.log(response);
+                setLoading(false);
+                getAllUsers();
+
+                toast.success(`Account Active`);
+            })
+            .catch((error) => {
+                setLoading(false);
+                toast.dismiss(toastLoadingId);
+                console.log(error);
+            });
+    };
+
+    // const handleShow = (index: any) => {
+    //     setCrebitAmount(0);
+    //     setCrebitType("");
+    //     const newShowMenu = [...showMenu];
+    //     newShowMenu[index] = !newShowMenu[index];
+    //     setShowMenu(newShowMenu);
+    //     setSelectedUserData(newShowMenu[index] ? users[index] : null);
+    // };
 
     const handleShow = (index: any) => {
         setCrebitAmount(0);
@@ -133,6 +170,9 @@ const Users = () => {
         newShowMenu[index] = !newShowMenu[index];
         setShowMenu(newShowMenu);
         setSelectedUserData(newShowMenu[index] ? users[index] : null);
+        setShudSuspend(users[index]?.status === "Suspended");
+        setOpenDelete(false); // Reset other menu states
+        setCrebit(false);
     };
 
     const getAllUsers = () => {
@@ -220,9 +260,22 @@ const Users = () => {
                                         >
                                             Credit/Debit
                                         </div>
-                                        <div className="w-full h-8 flex items-center justify-center bg-white cursor-pointer" onClick={()=>setOpenSuspend(true)}>
+                                        {/* <div className="w-full h-8 flex items-center justify-center bg-white cursor-pointer" onClick={()=>setOpenSuspend(true)}>
                                             Suspend
+                                        </div> */}
+                                        <div
+                                            className="w-full h-8 flex items-center justify-center bg-white cursor-pointer"
+                                            onClick={() =>
+                                                shudSuspend
+                                                    ? handleUnSuspend()
+                                                    : setOpenSuspend(true)
+                                            }
+                                        >
+                                            {shudSuspend
+                                                ? "Unsuspend"
+                                                : "Suspend"}
                                         </div>
+
                                         <div
                                             className="w-full h-8 flex items-center justify-center bg-white cursor-pointer"
                                             onClick={() => setOpenDelete(true)}
