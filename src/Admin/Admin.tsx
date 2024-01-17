@@ -3,7 +3,7 @@ import logo from "../assets/TheExpressTradesLogo.svg";
 import {BiUser} from "react-icons/bi";
 import { useState} from "react";
 import {NavLink} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {logout} from "../Redux/Features";
 import {useNavigate} from "react-router";
 // import axios from "axios";
@@ -12,6 +12,10 @@ const Admin = () => {
     const nav = useNavigate();
     const dispatch = useDispatch();
     const [show, setShow] = useState<boolean>(false);
+
+    const user = useSelector(
+        (state: any) => state.expressTrade.expressTrade.tradeUser
+    );
 
     const handleLogout = () => {
         dispatch(logout());
@@ -34,8 +38,8 @@ const Admin = () => {
                         {show && (
                             <div className="absolute top-10 right-[-15px] w-max px-4 py-2 h-max flex flex-col items-center justify-center bg-white">
                                 <div className="w-max h-16">
-                                    <p>Rapheal James</p>
-                                    <p className="text-xs">james@admin.com</p>
+                                    <p>{user?.fullName}</p>
+                                    <p className="text-xs">{user?.email}</p>
                                 </div>
                                 <button
                                     className="w-max h-max px-2 py-2 rounded text-xs font-medium bg-slate-200"

@@ -91,14 +91,13 @@ const Deposit = () => {
         console.log(amount);
         const data = new FormData();
         data.append("proofOfPayment", file);
-        data.append("file", file);
         data.append("amount", amount);
         data.append("user", user._id);
         data.append("fullName", user.fullName);
-        data.append("mode", mode);
+        data.append("paymentMode", mode);
         // console.log("Here's",data);
 
-        const url = "https://express-trades.vercel.app/api/v1/user/payment";
+        const url = "https://express-trades.onrender.com/api/v1/user/payment";
         const token = userToken;
         const headers = {
             Authorization: `Bearer ${token}`,

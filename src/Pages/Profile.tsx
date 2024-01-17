@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import {FaAngleRight} from "react-icons/fa";
 import {useDispatch, useSelector} from "react-redux";
-import { oneUser } from "../Redux/Features";
+import {oneUser} from "../Redux/Features";
 
 const Profile = () => {
     const user = useSelector(
@@ -14,7 +14,7 @@ const Profile = () => {
         (state: any) => state.expressTrade.expressTrade.getOneUser
     );
     console.log(user);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     const [edit, setEdit] = useState<boolean>(false);
     const [change, setChange] = useState<boolean>(false);
@@ -63,7 +63,7 @@ const Profile = () => {
                 toast.success(response?.data?.message);
                 console.log(response);
                 setEdit(false);
-                getOne()
+                getOne();
             })
             .catch((error) => {
                 console.log(error);
@@ -78,7 +78,7 @@ const Profile = () => {
             .get(url)
             .then((response) => {
                 console.log(response);
-                dispatch(oneUser(response.data.data))
+                dispatch(oneUser(response.data.data));
             })
             .catch((error) => {
                 console.log(error);
@@ -108,11 +108,7 @@ const Profile = () => {
                                 Full Name
                             </p>
                             <p className="text-[rgb(54,74,99)] text-base phone:text-sm">
-                                {oneUserData?.fullName
-                                    .toLowerCase()
-                                    .charAt(0)
-                                    .toUpperCase() +
-                                    oneUserData.fullName.toLowerCase().slice(1)}
+                                {oneUserData?.fullName}
                             </p>
                         </div>
                         <span className="w-max h-max rounded-full bg-gray-300 text-gray-400 p-2 flex items-center justify-center">

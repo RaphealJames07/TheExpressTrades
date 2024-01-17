@@ -14,7 +14,7 @@ import {NavLink} from "react-router-dom";
 import {useSelector} from "react-redux";
 import axios from "axios";
 import {useDispatch} from "react-redux";
-import {userTransactions} from "../Redux/Features";
+import {oneUser, userTransactions} from "../Redux/Features";
 import { useEffect } from "react";
 
 const User = () => {
@@ -22,6 +22,7 @@ const User = () => {
     const user = useSelector(
         (state: any) => state.expressTrade.expressTrade.tradeUser
     );
+    console.log(user);
 
     const userToken = useSelector(
         (state: any) => state.expressTrade.expressTrade.userToken
@@ -45,6 +46,26 @@ const User = () => {
                 console.log(error);
             });
     };
+
+    const getOneUser = () => {
+        const url = `https://express-trades.vercel.app/api/v1/user/one-user/${user._id}`;
+
+        axios
+            .get(url)
+            .then((response) => {
+                console.log(response);
+                dispatch(oneUser(response.data.data));
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
+
+    useEffect(() => {
+        getOne();
+        getOneUser()
+    }, []);
+
 
     useEffect(() => {
         getOne();
