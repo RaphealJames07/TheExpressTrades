@@ -15,7 +15,7 @@ import {useSelector} from "react-redux";
 import axios from "axios";
 import {useDispatch} from "react-redux";
 import {oneUser, userTransactions} from "../Redux/Features";
-import { useEffect } from "react";
+import {useEffect, useState} from "react";
 
 const User = () => {
     const dispatch = useDispatch();
@@ -63,13 +63,28 @@ const User = () => {
 
     useEffect(() => {
         getOne();
-        getOneUser()
+        getOneUser();
     }, []);
 
+    const [exchangeRate, setExchangeRate] = useState(0);
 
     useEffect(() => {
-        getOne();
+        axios
+            .get("https://api.coindesk.com/v1/bpi/currentprice.json")
+            .then((response) => {
+                const rate = response.data.bpi.USD.rate.replace(",", ""); // assuming USD rate
+                setExchangeRate(parseFloat(rate));
+            })
+            .catch((error) => {
+                console.error("Error fetching exchange rate:", error);
+            });
+
+        
     }, []);
+
+    const totalBtc = user.balance / exchangeRate;
+    const roundedTotalBtc = parseFloat(totalBtc.toFixed(8));
+    // console.log("Total BTC:",roundedTotalBtc)
 
     return (
         <>
@@ -87,7 +102,7 @@ const User = () => {
                                     AVAILABLE BALANCE
                                 </p>
                                 <p className="text-[rgb(225,73,84)] flex gap-2 items-end text-2xl">
-                                    0.000229
+                                    {roundedTotalBtc}
                                     <span className="text-lg font-semibold">
                                         BTC
                                     </span>

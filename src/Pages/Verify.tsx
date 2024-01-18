@@ -19,7 +19,7 @@ const Verify = () => {
             } else {
                 setLoading(true);
                 const toastLoadingId = toast.loading("Please wait...");
-                const url = `https://express-trades.vercel.app/api/v1/user/${token}`;
+                const url = `https://express-trades.vercel.app/api/v1/user/verify/${token}`;
                 const data = {otp: otp};
                 axios
                     .post(url, data)

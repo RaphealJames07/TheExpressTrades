@@ -2,7 +2,7 @@ import {FaBtc, FaEthereum} from "react-icons/fa";
 import {IoCopyOutline} from "react-icons/io5";
 import btcCode from "../assets/btccode.jpg";
 import ethCode from "../assets/ethcode.jpg";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {IoMdArrowRoundBack} from "react-icons/io";
 // import toast from "react-hot-toast";
 import axios from "axios";
@@ -118,7 +118,74 @@ const Deposit = () => {
                 console.log(error);
                 setLoading(false)
             });
-    };
+        };
+        
+        const floatVariable: number = parseFloat(amount)
+    
+    
+    // const [exchangeRateEth, setExchangeRateEth] = useState(0);
+    // // console.log(exchangeRateEth);
+    // useEffect(() => {
+    //     // Fetch the current exchange rate from an API (replace with a reliable API)
+    //     const url1 = "https://api.coincap.io/v2/rates/ethereum"
+    //     axios
+    //         .get(url1)
+    //         .then((response) => {
+    //             console.log("ETH:", response);
+    //             const rate = response.data.data.rateUsd.replace(".", ""); // assuming USD rate
+    //             setExchangeRateEth(parseFloat(rate));
+    //         })
+    //         .catch((error) => {
+    //             console.error("Error fetching exchange rate:", error);
+    //         });
+    // }, [amount]); // Empty dependency array ensures useEffect runs only once on component mount
+
+    // const totalEth = floatVariable / exchangeRateEth;
+    // const roundedTotalEth = parseFloat(totalEth.toFixed(8));
+    // console.log(roundedTotalEth)
+
+    
+    
+    const [exchangeRateBTC, setExchangeRateBTC] = useState(0);
+    const [exchangeRateUsd, setExchangeRateUsd] = useState(0);
+    // console.log(exchangeRateBTC);
+    useEffect(() => {
+        const url2 = "https://api.coindesk.com/v1/bpi/currentprice.json"
+        // Fetch the current exchange rate from an API (replace with a reliable API)
+        axios
+            .get(url2)
+            .then((response) => {
+                console.log("BTC:", response);
+                const rate = response.data.bpi.USD.rate.replace(",", ""); // assuming USD rate
+                setExchangeRateBTC(parseFloat(rate));
+            })
+            .catch((error) => {
+                console.error("Error fetching exchange rate:", error);
+            });
+
+            //exchange rate from 1BTC to USD
+            fetch(
+                "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+            )
+                .then((response) => response.json())
+                .then((data) => {
+                    const btcToUsdExchangeRate = data.bitcoin.usd;
+                    console.log(
+                        `Exchange rate of 1 BTC to USD: ${btcToUsdExchangeRate}`
+                    );
+                    setExchangeRateUsd(btcToUsdExchangeRate)
+                })
+                .catch((error) =>
+                    console.error("Error fetching exchange rate:", error)
+                );
+    }, [amount])
+
+    const totalBtc = floatVariable / exchangeRateBTC;
+    const roundedTotalBtc = parseFloat(totalBtc.toFixed(8));
+    console.log(roundedTotalBtc);
+    // const oneBtc = 1 / exchangeRate;
+    // const oneRoundedBtc = parseFloat(oneBtc.toFixed(8));
+
 
     return (
         <>
@@ -140,11 +207,11 @@ const Deposit = () => {
                                     Transaction details
                                 </p>
                                 <p className="text-[rgb(82,100,132)] font-medium text-center text-base">
-                                    You are about to get 0.004445 BTC for{" "}
+                                    You are about to pay {roundedTotalBtc} BTC for{" "}
                                     {amount}.00 USD*
                                 </p>
                                 <p className="text-[rgb(128,148,174)] text-center text-xs">
-                                    Exchange rate: 1 BTC = 44,998.00 USD
+                                    Exchange rate: 1 BTC = {exchangeRateUsd} USD
                                 </p>
                                 <div className="w-max h-10 flex items-center justify-center bg-[#e5e9f2] px-4 rounded cursor-pointer">
                                     <p className="w-max flex items-center gap-2 text-sm font-semibold">
@@ -229,7 +296,7 @@ const Deposit = () => {
                                     Transaction details
                                 </p>
                                 <p className="text-[rgb(82,100,132)] font-medium text-center text-base">
-                                    You are about to get 0.004445 ETH for{" "}
+                                    You are about to pay 0.004445 ETH for{" "}
                                     {amount}.00 USD*
                                 </p>
                                 <p className="text-[rgb(128,148,174)] text-center text-xs">
@@ -319,8 +386,7 @@ const Deposit = () => {
                                         }
                                     />
                                     <p className="text-[rgb(128,148,174)] text-xs flex justify-between items-center">
-                                        Minimum: 50.00 USD{" "}
-                                        <span>50 USD = 0.001114 BTC</span>
+                                        Minimum: 50.00 USD
                                     </p>
                                 </div>
                                 <div className="w-full h-max flex flex-col ">

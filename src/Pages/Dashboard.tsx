@@ -5,12 +5,31 @@ import TrandinViewWidgetOne from "../Components/TrandinViewWidgetOne";
 import TradingViewWidgettwo from "../Components/TradingViewWidgettwo";
 import TradingViewWidgetThree from "../Components/TradingViewWidgetThree";
 import {useSelector} from "react-redux";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Dashboard = () => {
     // console.log("object");
     const user = useSelector(
         (state: any) => state.expressTrade.expressTrade.tradeUser
     );
+    const [exchangeRate, setExchangeRate] = useState(0);
+
+    useEffect(() => {
+        // Fetch the current exchange rate from an API (replace with a reliable API)
+        axios
+            .get("https://api.coindesk.com/v1/bpi/currentprice.json")
+            .then((response) => {
+                const rate = response.data.bpi.USD.rate.replace(",", ""); // assuming USD rate
+                setExchangeRate(parseFloat(rate));
+            })
+            .catch((error) => {
+                console.error("Error fetching exchange rate:", error);
+            });
+    }, []); // Empty dependency array ensures useEffect runs only once on component mount
+
+    const totalBtc = user.balance / exchangeRate;
+    const roundedTotalBtc = parseFloat(totalBtc.toFixed(8));
     return (
         <div className="w-full h-max ">
             <div className="w-full h-max flex flex-col px-10 phone:px-4 py-8 gap-3">
@@ -51,7 +70,7 @@ const Dashboard = () => {
                     </p>
                     <div className="w-max h-max flex justify-between gap-20 phone:gap-0 phone:justify-between phone:w-full">
                         <p className="text-4xl text-[rgb(82,100,132)] smallPhone:text-3xl">
-                            0.000228 BTC
+                            {roundedTotalBtc} BTC
                         </p>
                         <p className="text-sm font-semibold text-[rgb(30,224,172)] flex items-end">
                             = ${user.balance}.00
