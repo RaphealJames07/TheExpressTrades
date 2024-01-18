@@ -87,7 +87,7 @@ const Deposit = () => {
 
     const handleSubmit = () => {
         const toastLoadingId = toast.loading("Please wait...");
-        setLoading(true)
+        setLoading(true);
         console.log(amount);
         const data = new FormData();
         data.append("proofOfPayment", file);
@@ -110,19 +110,18 @@ const Deposit = () => {
                 toast.dismiss(toastLoadingId);
                 toast.success("Deposit pending, awaiting confirmation..");
                 console.log(response);
-                setLoading(false)
+                setLoading(false);
             })
             .catch((error) => {
                 toast.dismiss(toastLoadingId);
                 toast.error("Error Occured please try again or contact admin");
                 console.log(error);
-                setLoading(false)
+                setLoading(false);
             });
-        };
-        
-        const floatVariable: number = parseFloat(amount)
-    
-    
+    };
+
+    const floatVariable: number = parseFloat(amount);
+
     // const [exchangeRateEth, setExchangeRateEth] = useState(0);
     // // console.log(exchangeRateEth);
     // useEffect(() => {
@@ -144,13 +143,11 @@ const Deposit = () => {
     // const roundedTotalEth = parseFloat(totalEth.toFixed(8));
     // console.log(roundedTotalEth)
 
-    
-    
     const [exchangeRateBTC, setExchangeRateBTC] = useState(0);
     const [exchangeRateUsd, setExchangeRateUsd] = useState(0);
     // console.log(exchangeRateBTC);
     useEffect(() => {
-        const url2 = "https://api.coindesk.com/v1/bpi/currentprice.json"
+        const url2 = "https://api.coindesk.com/v1/bpi/currentprice.json";
         // Fetch the current exchange rate from an API (replace with a reliable API)
         axios
             .get(url2)
@@ -163,22 +160,22 @@ const Deposit = () => {
                 console.error("Error fetching exchange rate:", error);
             });
 
-            //exchange rate from 1BTC to USD
-            fetch(
-                "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
-            )
-                .then((response) => response.json())
-                .then((data) => {
-                    const btcToUsdExchangeRate = data.bitcoin.usd;
-                    console.log(
-                        `Exchange rate of 1 BTC to USD: ${btcToUsdExchangeRate}`
-                    );
-                    setExchangeRateUsd(btcToUsdExchangeRate)
-                })
-                .catch((error) =>
-                    console.error("Error fetching exchange rate:", error)
+        //exchange rate from 1BTC to USD
+        fetch(
+            "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                const btcToUsdExchangeRate = data.bitcoin.usd;
+                console.log(
+                    `Exchange rate of 1 BTC to USD: ${btcToUsdExchangeRate}`
                 );
-    }, [amount])
+                setExchangeRateUsd(btcToUsdExchangeRate);
+            })
+            .catch((error) =>
+                console.error("Error fetching exchange rate:", error)
+            );
+    }, [amount]);
 
     const totalBtc = floatVariable / exchangeRateBTC;
     const roundedTotalBtc = parseFloat(totalBtc.toFixed(8));
@@ -186,6 +183,16 @@ const Deposit = () => {
     // const oneBtc = 1 / exchangeRate;
     // const oneRoundedBtc = parseFloat(oneBtc.toFixed(8));
 
+    // const [copied, setCopied] = useState(false);
+
+    const handleCopyToClipboard = (address:any) => {
+        navigator.clipboard.writeText(address);
+       toast.success("copied to clipboard")
+    };
+    const handleCopyToClipboardBtc = (address:any) => {
+        navigator.clipboard.writeText(address);
+       toast.success("copied to clipboard")
+    };
 
     return (
         <>
@@ -207,14 +214,18 @@ const Deposit = () => {
                                     Transaction details
                                 </p>
                                 <p className="text-[rgb(82,100,132)] font-medium text-center text-base">
-                                    You are about to pay {roundedTotalBtc} BTC for{" "}
-                                    {amount}.00 USD*
+                                    You are about to pay {roundedTotalBtc} BTC
+                                    for {amount}.00 USD*
                                 </p>
                                 <p className="text-[rgb(128,148,174)] text-center text-xs">
                                     Exchange rate: 1 BTC = {exchangeRateUsd} USD
                                 </p>
                                 <div className="w-max h-10 flex items-center justify-center bg-[#e5e9f2] px-4 rounded cursor-pointer">
-                                    <p className="w-max flex items-center gap-2 text-sm font-semibold">
+                                    <p className="w-max flex items-center gap-2 text-sm font-semibold" onClick={() =>
+                                            handleCopyToClipboardBtc(
+                                                "bc1qxppkw6kmdrwqnzeq8smfxqfwgvnqpxsuul59ve"
+                                            )
+                                        }>
                                         bc1qxppkw6kmdrwqnzeq8smfxqfwgvnqpxsuul59ve
                                         <span>
                                             <IoCopyOutline />
@@ -266,9 +277,7 @@ const Deposit = () => {
                                         onClick={handleSubmit}
                                         disabled={loading}
                                     >
-                                        {
-                                            loading? "Processing..." : "Submit"
-                                        }
+                                        {loading ? "Processing..." : "Submit"}
                                     </button>
                                 ) : (
                                     <button
@@ -303,7 +312,14 @@ const Deposit = () => {
                                     Exchange rate: 1 ETH = 44,998.00 USD
                                 </p>
                                 <div className="w-max h-10 flex items-center justify-center bg-[#e5e9f2] px-4 rounded cursor-pointer">
-                                    <p className="w-max flex items-center gap-2 text-sm font-semibold">
+                                    <p
+                                        className="w-max flex items-center gap-2 text-sm font-semibold"
+                                        onClick={() =>
+                                            handleCopyToClipboard(
+                                                "0x394be2dfCdca86C67cf33A69A0e68aB550A98dB7"
+                                            )
+                                        }
+                                    >
                                         0x394be2dfCdca86C67cf33A69A0e68aB550A98dB7
                                         <span>
                                             <IoCopyOutline />

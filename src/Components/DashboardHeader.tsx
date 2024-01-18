@@ -6,7 +6,7 @@ import {FiBarChart2} from "react-icons/fi";
 import {LuRepeat, LuWallet} from "react-icons/lu";
 import {IoSettingsOutline} from "react-icons/io5";
 import {PiSignOutBold} from "react-icons/pi";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Drawer} from "antd";
 import logo from "../assets/TheExpressTradesLogo.svg";
 import {BsGrid} from "react-icons/bs";
@@ -17,6 +17,7 @@ import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {logout} from "../Redux/Features";
 import {useDispatch} from "react-redux";
+import axios from "axios";
 
 const DashboardHeader = () => {
     const dispatch = useDispatch();
@@ -46,6 +47,25 @@ const DashboardHeader = () => {
     const user = useSelector(
         (state: any) => state.expressTrade.expressTrade.tradeUser
     );
+
+    const [exchangeRate, setExchangeRate] = useState(0);
+
+    useEffect(() => {
+        axios
+            .get("https://api.coindesk.com/v1/bpi/currentprice.json")
+            .then((response) => {
+                const rate = response.data.bpi.USD.rate.replace(",", ""); // assuming USD rate
+                setExchangeRate(parseFloat(rate));
+            })
+            .catch((error) => {
+                console.error("Error fetching exchange rate:", error);
+            });
+
+        
+    }, []);
+
+    const totalBtc = user.balance / exchangeRate;
+    const roundedTotalBtc = parseFloat(totalBtc.toFixed(8));
 
     return (
         <div className="w-[76%] phone:w-full h-16 fixed top-0 flex items-center z-50 justify-between px-10 phone:px-4 shadow-sm bg-white">
@@ -98,7 +118,7 @@ const DashboardHeader = () => {
                                             AVAILABLE BALANCE
                                         </p>
                                         <p className="text-[#e14954] flex gap-2 items-end text-2xl">
-                                            0.000229
+                                            {roundedTotalBtc}
                                             <span className="text-lg font-semibold">
                                                 BTC
                                             </span>
