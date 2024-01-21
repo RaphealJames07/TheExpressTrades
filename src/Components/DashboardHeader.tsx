@@ -208,7 +208,7 @@ const DashboardHeader = () => {
                                     AVAILABLE BALANCE
                                 </p>
                                 <p className="text-[rgb(225,73,84)] flex gap-2 items-end text-2xl">
-                                    0.000229
+                                    {roundedTotalBtc}
                                     <span className="text-lg font-semibold">
                                         BTC
                                     </span>
