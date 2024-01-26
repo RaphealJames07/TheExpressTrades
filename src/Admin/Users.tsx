@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import {CiMenuKebab} from "react-icons/ci";
 import {useSelector} from "react-redux";
-import {allUsers} from "../Redux/Features";
+import {allUsers, user} from "../Redux/Features";
 import {useDispatch} from "react-redux";
 
 const Users = () => {
@@ -12,6 +12,7 @@ const Users = () => {
     const users = useSelector(
         (state: any) => state.expressTrade.expressTrade.allAdminUsers
     );
+    console.log("Try ME", users);
     const userToken = useSelector(
         (state: any) => state.expressTrade.expressTrade.userToken
     );
@@ -154,6 +155,34 @@ const Users = () => {
             });
     };
 
+    const handleApproveUser = () => {
+        const toastLoadingId = toast.loading("Please wait...");
+        setLoading(true);
+        const url = `https://express-trades.vercel.app/api/v1/user/approve/${selectedUserData?._id}`;
+        const data = {};
+
+        const token = userToken;
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        axios
+            .post(url, data, {headers})
+            .then((response) => {
+                setLoading(false);
+                toast.dismiss(toastLoadingId);
+                console.log(response);
+                setLoading(false);
+                getAllUsers();
+                setOpenSuspend(false)
+                toast.success(`User Approved Successfully`);
+            })
+            .catch((error) => {
+                setLoading(false);
+                toast.dismiss(toastLoadingId);
+                console.log(error);
+            });
+    };
+
     // const handleShow = (index: any) => {
     //     setCrebitAmount(0);
     //     setCrebitType("");
@@ -214,6 +243,9 @@ const Users = () => {
                         Status
                     </p>
                     <p className="w-32 h-full flex justify-center items-center">
+                        Approved
+                    </p>
+                    <p className="w-32 h-full flex justify-center items-center">
                         Account Balance
                     </p>
                     <p className="w-32 h-full flex justify-center items-center">
@@ -240,6 +272,11 @@ const Users = () => {
                             </p>
                             <p className="w-32 h-full flex justify-center items-center text-sm">
                                 {item?.status}
+                            </p>
+                            <p className="w-32 h-full flex justify-center items-center text-sm">
+                                {
+                                    item.isApproved ? "True" : "False"
+                                }
                             </p>
                             <p className="w-32 h-full flex justify-center items-center text-sm">
                                 ${item?.balance}
@@ -281,6 +318,12 @@ const Users = () => {
                                             onClick={() => setOpenDelete(true)}
                                         >
                                             Delete User
+                                        </div>
+                                        <div
+                                            className="w-full h-8 flex items-center justify-center bg-white cursor-pointer"
+                                            onClick={handleApproveUser}
+                                        >
+                                            Approve User
                                         </div>
                                     </div>
                                 )}
