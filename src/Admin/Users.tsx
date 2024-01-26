@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import toast from "react-hot-toast";
 import {CiMenuKebab} from "react-icons/ci";
 import {useSelector} from "react-redux";
-import {allUsers, user} from "../Redux/Features";
+import {allUsers} from "../Redux/Features";
 import {useDispatch} from "react-redux";
 
 const Users = () => {
