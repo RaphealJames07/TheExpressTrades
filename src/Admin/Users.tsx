@@ -337,7 +337,7 @@ const Users = () => {
                 onCancel={() => setCrebit(false)}
                 cancelButtonProps={{hidden: true}}
                 okButtonProps={{
-                    hidden: true,
+                    hidden: true
                 }}
                 closeIcon={true}
             >
