@@ -103,7 +103,7 @@ const Home = () => {
                                     </NavLink>
                                     <NavLink to={"contact"}>
                                         <li className="w-max h-full flex items-center transition-all cursor-pointer hover:border-b-2 hover:border-b-white">
-                                            Contact
+                                            Contact Us
                                         </li>
                                     </NavLink>
                                     <NavLink to={"faq"}>
