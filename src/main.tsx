@@ -4,7 +4,7 @@ import './index.css'
 
 import 'react-toastify/dist/ReactToastify.css'
 import { Provider } from 'react-redux'
-import store  from './store.tsx'
+import store  from './store.ts'
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistStore } from 'redux-persist';
 import { Toaster } from 'react-hot-toast'
