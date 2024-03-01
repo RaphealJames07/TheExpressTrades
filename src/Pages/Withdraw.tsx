@@ -1,4 +1,29 @@
+import {Modal} from "antd";
+import {useState} from "react";
+import toast from "react-hot-toast";
+import {useSelector} from "react-redux";
+import {useNavigate} from "react-router";
+
 const Withdraw = () => {
+    const [openModal, setOpenModal] = useState(false);
+    const [amount, setAmount] = useState("");
+    const [mode, setMode] = useState("");
+    const nav = useNavigate();
+    const user = useSelector(
+        (state: any) => state.expressTrade.expressTrade.tradeUser
+    );
+    console.log(user);
+
+    const handleWithdraw = () => {
+        if (!amount && !mode) {
+            alert("Enter Value");
+        } else if (user.balance < amount) {
+            toast.error("Insufficient Balance");
+        } else {
+            setOpenModal(true);
+        }
+    };
+
     return (
         <>
             <div className="w-full h-max">
@@ -13,18 +38,82 @@ const Withdraw = () => {
                             </p>
                             <input
                                 type="number"
-                                className="w-full h-10 border border-[rgb(128,148,174)] outline-1 outline-red-300 rounded"
+                                className="w-full h-10 border border-[rgb(128,148,174)] outline-1 pl-2 outline-red-300 rounded"
+                                value={amount}
+                                onChange={(e) => setAmount(e.target.value)}
+                                placeholder="Input amount here..."
                             />
                         </div>
-                        <select name="" id="" className="w-full h-10 border border-[rgb(128,148,174)] outline-1 outline-red-300 rounded">
+                        <select
+                            name=""
+                            id=""
+                            className="w-full h-10 border border-[rgb(128,148,174)] outline-1 outline-red-300 rounded"
+                            onChange={(e) => setMode(e.target.value)}
+                            value={mode}
+                        >
                             <option value="">Select Method</option>
-                            <option value="Method 1">Bitcoin</option>
-                            <option value="Method 1">Ethereum</option>
+                            <option value="btc">Bitcoin</option>
+                            <option value="eth">Ethereum</option>
                         </select>
-                        <button className="w-full h-10 bg-[#e14954] text-white rounded text-sm font-semibold">WITHDRAW</button>
+                        <button
+                            className="w-full h-10 bg-[#e14954] text-white rounded text-sm font-semibold"
+                            onClick={handleWithdraw}
+                        >
+                            WITHDRAW
+                        </button>
                     </div>
                 </div>
             </div>
+            <Modal
+                open={openModal}
+                onCancel={() => setOpenModal(false)}
+                cancelButtonProps={{hidden: true}}
+                okButtonProps={{
+                    hidden: true,
+                }}
+                closeIcon={true}
+            >
+                <div className="w-full h-max flex flex-col items-center gap-5">
+                    <p className="text-lg">Please Confirm </p>
+                    <div className="w-full h-max text-lg">
+                        <p>
+                            Amount: <span>{amount}</span>
+                        </p>
+                        <p>
+                            Mode: <span>{mode.toUpperCase()}</span>
+                        </p>
+                    </div>
+                    <div className="w-full h-max flex gap-4 items-center justify-center">
+                        <button
+                            className="w-max h-max px-4 py-2 bg-red-500 rounded text-white font-semibold"
+                            onClick={() => {
+                                setAmount("");
+                                setMode("");
+                                setOpenModal(false);
+                            }}
+                        >
+                            CANCEL
+                        </button>
+                        <button
+                            className="w-max h-max px-4 py-2 bg-green-500 rounded text-white font-semibold"
+                            onClick={() => {
+                                setAmount("");
+                                setMode("");
+                                setOpenModal(false);
+                                toast.success(
+                                    "Request placed !, pending admin approval",
+                                    {duration: 5000}
+                                );
+                                setTimeout(() => {
+                                    nav("/user/dashboard");
+                                }, 2000);
+                            }}
+                        >
+                            CONFIRM
+                        </button>
+                    </div>
+                </div>
+            </Modal>
         </>
     );
 };
