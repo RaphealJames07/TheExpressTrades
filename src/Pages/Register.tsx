@@ -16,6 +16,7 @@ const Register = () => {
         const nav = useNavigate();
 
         const handleSendOtp = () => {
+            const toastLoadingId = toast.loading("Generating otp code...");
             const data = {email: email};
             const url =
                 "https://express-trades.onrender.com/api/v1/user/sign-up-mail";
@@ -24,13 +25,20 @@ const Register = () => {
                 .post(url, data)
                 .then((res) => {
                     console.log(res);
+                    toast.dismiss(toastLoadingId);
+                    toast.success(`Check your email ${email} for OTP code`, {
+                        duration: 5000,
+                    });
+                    setTimeout(() => {
+                        nav("/verify");
+                    }, 6000);
                 })
                 .catch((error) => {
                     console.log(error);
                 });
         };
 
-        const handleRegister = (e:any) => {
+        const handleRegister = (e: any) => {
             e.preventDefault();
             if (
                 !fullName ||
@@ -60,19 +68,13 @@ const Register = () => {
                 axios
                     .post(url, data)
                     .then((response) => {
-                        handleSendOtp()
-                        // console.log(response);
-                        setLoading(false);
                         toast.dismiss(toastLoadingId);
-                        toast.success(response?.data?.message, {
-                            duration: 5000,
-                        });
-                        const token = response?.data?.data?.token
-                        localStorage.setItem('verifyToken', token)
+                        toast.success("Account created successfully!");
+                        handleSendOtp();
+                        // console.log(response);
+                        const token = response?.data?.data?.token;
+                        localStorage.setItem("verifyToken", token);
                         // console.log(token);
-                        setTimeout(() => {
-                            nav("/verify");
-                        }, 6000);
                     })
                     .catch((error) => {
                         toast.dismiss(toastLoadingId);
