@@ -45,7 +45,7 @@ const Register = () => {
                 toast.error("Password does not match");
                 // alert("Password does not match")
             } else {
-                console.log("Creating account...");
+                // console.log("Creating account...");
                 const toastLoadingId = toast.loading("Please wait...");
                 const url =
                     "https://express-trades.vercel.app/api/v1/user/sign-up";
@@ -61,7 +61,7 @@ const Register = () => {
                     .post(url, data)
                     .then((response) => {
                         handleSendOtp()
-                        console.log(response);
+                        // console.log(response);
                         setLoading(false);
                         toast.dismiss(toastLoadingId);
                         toast.success(response?.data?.message, {
@@ -69,7 +69,7 @@ const Register = () => {
                         });
                         const token = response?.data?.data?.token
                         localStorage.setItem('verifyToken', token)
-                        console.log(token);
+                        // console.log(token);
                         setTimeout(() => {
                             nav("/verify");
                         }, 6000);

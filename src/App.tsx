@@ -28,140 +28,140 @@ import AdminTransactions from "./Admin/AdminTransactions";
 import PrivateRoute from "./Routes/PrivateRoute";
 import AdminPrivate from "./Routes/AdminPrivate";
 
-const router = createBrowserRouter([
-    // Public routes remain unchanged
-    {path: "/", element: <Home />},
-    {path: "/contact", element: <Contact />},
-    {path: "/about", element: <About />},
-    {path: "/plans", element: <Plans />},
-    {path: "/faq", element: <Faq />},
-    {path: "/register", element: <Register />},
-    {path: "/login", element: <Login />},
-    {path: "/forget-password", element: <ForgetPassword />},
-    {path: "/verify", element: <Verify />},
-
-    {
-        path: "admin",
-        element: <AdminPrivate element={<Admin />}></AdminPrivate>,
-        children: [
-            {
-                path: "users",
-                element: <Users />,
-            },
-            {
-                path: "transactions",   
-                element: <AdminTransactions />,
-            },
-        ],
-    },
-    {
-        path: "user",
-        element: <PrivateRoute element={<User />}></PrivateRoute>,
-        children: [
-            {
-                path: "dashboard",
-                element: (
-                    <>
-                        <Dashboard />
-                    </>
-                ),
-            },
-            {
-                path: "my-plans",
-                element: (
-                    <>
-                        <MyPlans />
-                    </>
-                ),
-            },
-            {
-                path: "invest",
-                element: (
-                    <>
-                        <Invest />
-                    </>
-                ),
-            },
-            {
-                path: "new-investment/100",
-                element: (
-                    <>
-                        <InvestConfirm />
-                    </>
-                ),
-            },
-            {
-                path: "transactions",
-                element: (
-                    <>
-                        <Transactions />
-                    </>
-                ),
-            },
-            {
-                path: "withdraw",
-                element: (
-                    <>
-                        <Withdraw />
-                    </>
-                ),
-            },
-            {
-                path: "notification",
-                element: (
-                    <>
-                        <Notification />
-                    </>
-                ),
-            },
-            {
-                path: "my-account",
-                element: (
-                    <>
-                        <MyAccount />
-                    </>
-                ),
-                children: [
-                    {
-                        path: "profile",
-                        element: (
-                            <>
-                                <Profile />
-                            </>
-                        ),
-                    },
-                    {
-                        path: "security",
-                        element: (
-                            <>
-                                <Security />
-                            </>
-                        ),
-                    },
-                    {
-                        path: "payouts",
-                        element: (
-                            <>
-                                <Payouts />
-                            </>
-                        ),
-                    },
-                ],
-            },
-            {
-                path: "deposit",
-                element: (
-                    <>
-                        <Deposit />
-                    </>
-                ),
-            },
-        ],
-    },
-]);
-
 const App = () => {
     // console.log("object");
+
+    const router = createBrowserRouter([
+        // Public routes remain unchanged
+        {path: "/", element: <Home />},
+        {path: "/contact", element: <Contact />},
+        {path: "/about", element: <About />},
+        {path: "/plans", element: <Plans />},
+        {path: "/faq", element: <Faq />},
+        {path: "/register", element: <Register />},
+        {path: "/login", element: <Login />},
+        {path: "/forget-password", element: <ForgetPassword />},
+        {path: "/verify", element: <Verify />},
+
+        {
+            path: "admin",
+            element: <AdminPrivate element={<Admin />}></AdminPrivate>,
+            children: [
+                {
+                    path: "users",
+                    element: <Users />,
+                },
+                {
+                    path: "transactions",
+                    element: <AdminTransactions />,
+                },
+            ],
+        },
+        {
+            path: "user",
+            element: <PrivateRoute element={<User />}></PrivateRoute>,
+            children: [
+                {
+                    path: "dashboard",
+                    element: (
+                        <>
+                            <Dashboard />
+                        </>
+                    ),
+                },
+                {
+                    path: "my-plans",
+                    element: (
+                        <>
+                            <MyPlans />
+                        </>
+                    ),
+                },
+                {
+                    path: "invest",
+                    element: (
+                        <>
+                            <Invest />
+                        </>
+                    ),
+                },
+                {
+                    path: "new-investment/100",
+                    element: (
+                        <>
+                            <InvestConfirm />
+                        </>
+                    ),
+                },
+                {
+                    path: "transactions",
+                    element: (
+                        <>
+                            <Transactions />
+                        </>
+                    ),
+                },
+                {
+                    path: "withdraw",
+                    element: (
+                        <>
+                            <Withdraw />
+                        </>
+                    ),
+                },
+                {
+                    path: "notification",
+                    element: (
+                        <>
+                            <Notification />
+                        </>
+                    ),
+                },
+                {
+                    path: "my-account",
+                    element: (
+                        <>
+                            <MyAccount />
+                        </>
+                    ),
+                    children: [
+                        {
+                            path: "profile",
+                            element: (
+                                <>
+                                    <Profile />
+                                </>
+                            ),
+                        },
+                        {
+                            path: "security",
+                            element: (
+                                <>
+                                    <Security />
+                                </>
+                            ),
+                        },
+                        {
+                            path: "payouts",
+                            element: (
+                                <>
+                                    <Payouts />
+                                </>
+                            ),
+                        },
+                    ],
+                },
+                {
+                    path: "deposit",
+                    element: (
+                        <>
+                            <Deposit />
+                        </>
+                    ),
+                },
+            ],
+        },
+    ]);
     return (
         <>
             <RouterProvider router={router} />

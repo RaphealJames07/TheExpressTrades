@@ -24,7 +24,7 @@ const AdminTransactions = () => {
         axios
             .get(url, {headers})
             .then((response) => {
-                console.log("All Transactions Admin", response?.data?.data);
+                // console.log("All Transactions Admin", response?.data?.data);
                 dispatch(adminTransactionView(response?.data?.data));
             })
             .catch((error) => {
@@ -53,7 +53,7 @@ const AdminTransactions = () => {
         null
     );
 
-    console.log(selectedUserData);
+    // console.log(selectedUserData);
     const [loading, setLoading] = useState<boolean>(false);
     const [openConfirm, setOpenConfirm] = useState(false);
 

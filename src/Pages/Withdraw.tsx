@@ -1,4 +1,5 @@
 import {Modal} from "antd";
+import axios from "axios";
 import {useState} from "react";
 import toast from "react-hot-toast";
 import {useSelector} from "react-redux";
@@ -12,7 +13,7 @@ const Withdraw = () => {
     const user = useSelector(
         (state: any) => state.expressTrade.expressTrade.tradeUser
     );
-    console.log(user);
+    // console.log(user);
 
     const handleWithdraw = () => {
         if (!amount && !mode) {
@@ -22,6 +23,38 @@ const Withdraw = () => {
         } else {
             setOpenModal(true);
         }
+    };
+    const userToken = useSelector(
+        (state: any) => state.expressTrade.expressTrade.userToken
+    );
+
+    const handlePostWithdrawal = () => {
+        const toastLoadingId = toast.loading("Please Wait...");
+        const data = {
+            amount: amount,
+            withdrawMode: mode,
+        };
+        const url = "https://express-trades.vercel.app/api/v1/user/withdraw";
+        const token = userToken;
+
+        const headers = {
+            Authorization: `Bearer ${token}`,
+        };
+        axios
+            .post(url, data, {headers})
+            .then((response) => {
+                toast.dismiss(toastLoadingId);
+                toast.success(response?.data?.message, {duration: 5000});
+                console.log(response);
+                setTimeout(() => {
+                    nav("/user/dashboard");
+                }, 3000);
+            })
+            .catch((error) => {
+                console.log(error);
+                toast.dismiss(toastLoadingId);
+                toast.error(error?.response?.data?.message);
+            });
     };
 
     return (
@@ -52,8 +85,8 @@ const Withdraw = () => {
                             value={mode}
                         >
                             <option value="">Select Method</option>
-                            <option value="btc">Bitcoin</option>
-                            <option value="eth">Ethereum</option>
+                            <option value="Bitcoin">Bitcoin</option>
+                            <option value="Ethereum">Ethereum</option>
                         </select>
                         <button
                             className="w-full h-10 bg-[#e14954] text-white rounded text-sm font-semibold"
@@ -96,18 +129,7 @@ const Withdraw = () => {
                         </button>
                         <button
                             className="w-max h-max px-4 py-2 bg-green-500 rounded text-white font-semibold"
-                            onClick={() => {
-                                setAmount("");
-                                setMode("");
-                                setOpenModal(false);
-                                toast.success(
-                                    "Request placed !, pending admin approval",
-                                    {duration: 5000}
-                                );
-                                setTimeout(() => {
-                                    nav("/user/dashboard");
-                                }, 2000);
-                            }}
+                            onClick={handlePostWithdrawal}
                         >
                             CONFIRM
                         </button>

@@ -88,7 +88,7 @@ const Deposit = () => {
     const handleSubmit = () => {
         const toastLoadingId = toast.loading("Please wait...");
         setLoading(true);
-        console.log(amount);
+        // console.log(amount);
         const data = new FormData();
         data.append("proofOfPayment", file);
         data.append("amount", amount);
@@ -103,7 +103,7 @@ const Deposit = () => {
             Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data", // Make sure to set the correct content type
         };
-        console.log("Data to post:", data);
+        // console.log("Data to post:", data);
         axios
             .post(url, data, {headers})
             .then((response) => {
@@ -152,7 +152,7 @@ const Deposit = () => {
         axios
             .get(url2)
             .then((response) => {
-                console.log("BTC:", response);
+                // console.log("BTC:", response);
                 const rate = response.data.bpi.USD.rate.replace(",", ""); // assuming USD rate
                 setExchangeRateBTC(parseFloat(rate));
             })
@@ -167,9 +167,9 @@ const Deposit = () => {
             .then((response) => response.json())
             .then((data) => {
                 const btcToUsdExchangeRate = data.bitcoin.usd;
-                console.log(
-                    `Exchange rate of 1 BTC to USD: ${btcToUsdExchangeRate}`
-                );
+                // console.log(
+                //     `Exchange rate of 1 BTC to USD: ${btcToUsdExchangeRate}`
+                // );
                 setExchangeRateUsd(btcToUsdExchangeRate);
             })
             .catch((error) =>
@@ -179,7 +179,7 @@ const Deposit = () => {
 
     const totalBtc = floatVariable / exchangeRateBTC;
     const roundedTotalBtc = parseFloat(totalBtc.toFixed(8));
-    console.log(roundedTotalBtc);
+    // console.log(roundedTotalBtc);
     // const oneBtc = 1 / exchangeRate;
     // const oneRoundedBtc = parseFloat(oneBtc.toFixed(8));
 

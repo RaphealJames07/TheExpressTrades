@@ -17,19 +17,23 @@ import {useDispatch} from "react-redux";
 import {oneUser, userTransactions} from "../Redux/Features";
 import {useEffect, useState} from "react";
 
+
+
+
 const User = () => {
+    
     const dispatch = useDispatch();
     const user = useSelector(
         (state: any) => state.expressTrade.expressTrade.tradeUser
     );
-    console.log(user);
+    // console.log(user);
 
     const userToken = useSelector(
         (state: any) => state.expressTrade.expressTrade.userToken
     );
 
     const getOne = () => {
-        console.log("Getting transaction...");
+        // console.log("Getting transaction...");
         const url = `https://express-trades.vercel.app/api/v1/user/transactions`;
         const token = userToken;
         const headers = {
@@ -39,7 +43,7 @@ const User = () => {
         axios
             .get(url, {headers})
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 dispatch(userTransactions(response?.data?.data));
             })
             .catch((error) => {
@@ -53,7 +57,7 @@ const User = () => {
         axios
             .get(url)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 dispatch(oneUser(response.data.data));
             })
             .catch((error) => {
@@ -64,6 +68,7 @@ const User = () => {
     useEffect(() => {
         getOne();
         getOneUser();
+        
     }, []);
 
     const [exchangeRate, setExchangeRate] = useState(0);

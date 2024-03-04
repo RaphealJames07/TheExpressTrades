@@ -57,7 +57,7 @@ const Payouts = () => {
         axios
             .get(url)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 dispatch(oneUser(response.data.data));
             })
             .catch((error) => {

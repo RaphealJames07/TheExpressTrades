@@ -171,7 +171,7 @@ const Transactions = () => {
     const transaction = useSelector(
         (state: any) => state.expressTrade.expressTrade.transactions
     );
-    console.log(transaction);
+    // console.log(transaction);
 
     const openProofOfPayment = (url: any) => {
         window.open(url, "_blank");

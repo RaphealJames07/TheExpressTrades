@@ -55,7 +55,7 @@ function TradingViewWidgetOne() {
 
   useEffect(() => {
     if (!hasMounted.current) {
-      console.log('useEffect running');
+      // console.log('useEffect running');
 
       const script = document.createElement("script");
       script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
@@ -80,7 +80,7 @@ function TradingViewWidgetOne() {
     }
   }, []);
 
-  console.log('Rendering component');
+  // console.log('Rendering component');
 
   return (
     <div className="tradingview-widget-container" ref={container} style={{ height: "100%", width: "100%" }}>

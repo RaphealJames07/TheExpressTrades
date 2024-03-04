@@ -12,7 +12,7 @@ const Users = () => {
     const users = useSelector(
         (state: any) => state.expressTrade.expressTrade.allAdminUsers
     );
-    console.log("Try ME", users);
+    // console.log("Try ME", users);
     const userToken = useSelector(
         (state: any) => state.expressTrade.expressTrade.userToken
     );
@@ -213,7 +213,7 @@ const Users = () => {
         axios
             .get(url, {headers})
             .then((response) => {
-                console.log("All Users", response?.data?.data);
+                // console.log("All Users", response?.data?.data);
                 dispatch(allUsers(response?.data?.data));
                 setCrebit(false);
             })

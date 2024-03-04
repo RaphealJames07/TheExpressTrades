@@ -22,7 +22,7 @@ const Login = () => {
             axios
                 .post(url, data)
                 .then((res) => {
-                    console.log(res);
+                    // console.log(res);
                     const token = res?.data?.token;
                     localStorage.setItem("verifyToken", token);
                 })
@@ -44,7 +44,7 @@ const Login = () => {
                 axios
                     .post(url, data)
                     .then((response) => {
-                        console.log(response);
+                        // console.log(response);
                         dispatch(user(response?.data?.user));
                         dispatch(token(response?.data?.token));
                         setLoading(false);

@@ -26,7 +26,7 @@ const Verify = () => {
                     .then((response) => {
                         setLoading(false);
                         toast.dismiss(toastLoadingId);
-                        console.log(response);
+                        // console.log(response);
                         toast.success(response?.data?.message, {
                             duration: 5000,
                         });

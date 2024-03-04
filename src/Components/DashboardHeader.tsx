@@ -60,12 +60,12 @@ const DashboardHeader = () => {
             .catch((error) => {
                 console.error("Error fetching exchange rate:", error);
             });
-
-        
     }, []);
 
     const totalBtc = user.balance / exchangeRate;
     const roundedTotalBtc = parseFloat(totalBtc.toFixed(8));
+
+    const lengthOfTra = localStorage.getItem("numOfTransactionTET");
 
     return (
         <div className="w-[76%] phone:w-full h-16 fixed top-0 flex items-center z-50 justify-between px-10 phone:px-4 shadow-sm bg-white">
@@ -170,7 +170,7 @@ const DashboardHeader = () => {
                             </div>
                             <NavLink to={"/user/notification"}>
                                 <div className="w-full h-12 flex items-center justify-center pl-5 text-[#e8757d] text-sm font-medium">
-                                    View All
+                                    View All ({lengthOfTra})
                                 </div>
                             </NavLink>
                         </div>

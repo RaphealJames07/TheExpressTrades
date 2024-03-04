@@ -39,7 +39,7 @@ const Security = () => {
             axios
                 .post(url, data, {headers})
                 .then((response) => {
-                    console.log(response);
+                    // console.log(response);
                     toast.success(response?.data?.message);
                 })
                 .catch((error) => {

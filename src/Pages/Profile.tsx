@@ -13,7 +13,7 @@ const Profile = () => {
     const oneUserData = useSelector(
         (state: any) => state.expressTrade.expressTrade.getOneUser
     );
-    console.log(user);
+    // console.log(user);
     const dispatch = useDispatch();
 
     const [edit, setEdit] = useState<boolean>(false);
@@ -61,7 +61,7 @@ const Profile = () => {
             .post(url, data, {headers})
             .then((response) => {
                 toast.success(response?.data?.message);
-                console.log(response);
+                // console.log(response);
                 setEdit(false);
                 getOne();
             })
@@ -77,7 +77,7 @@ const Profile = () => {
         axios
             .get(url)
             .then((response) => {
-                console.log(response);
+                // console.log(response);
                 dispatch(oneUser(response.data.data));
             })
             .catch((error) => {
